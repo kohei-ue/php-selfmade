@@ -1,0 +1,623 @@
+@charset "UTF-8";
+/* reset */
+body, h1, h2, h3, h4, h5, h6, p, address,
+ul, ol, li, dl, dt, dd, img, form, table, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 100%;
+	text-align: left;
+	list-style-type: none;
+	border-collapse: collapse;
+}
+
+textarea { font-size: 100%; vertical-align:middle;}
+img { border-style: none; display: block; }
+hr { display: none; }
+em{font-style: normal}
+input{line-height:auto;vertical-align:middle;}
+strong.more{color:#c30}
+a{text-decoration: none;}
+
+body {
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* ------------------------------------------------------------ planIndex ---------------------------------------------------------------------- */
+.cls-1 {
+	fill: #2ca6e0;
+}
+.cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11 {
+	fill-rule: evenodd;
+}
+.cls-1, .cls-3, .cls-4, .cls-5, .cls-6, .cls-8, .cls-9, .cls-10, .cls-11 {
+	stroke: #fff;
+	stroke-width: .6px;
+}
+.cls-2 {
+	stroke: #040000;
+	stroke-linecap: round;
+	stroke-width: .48px;
+}
+.cls-2, .cls-12, .cls-13, .cls-14, .cls-15, .cls-16, .cls-17, .cls-18, .cls-19, .cls-20 {
+	fill: none;
+}
+.cls-2, .cls-18 {
+	stroke-linejoin: round;
+}
+.cls-3 {
+	fill: #d6e20e;
+}
+.cls-21, .cls-7 {
+	stroke-width: 0px;
+}
+.cls-12 {
+	stroke: #f29600;
+}
+.cls-12, .cls-13, .cls-14, .cls-15, .cls-16, .cls-17, .cls-18, .cls-19, .cls-20 {
+	stroke-width: 3px;
+}
+.cls-13 {
+	stroke: #e95711;
+}
+.cls-4 {
+	fill: #ff9fd4;
+}
+.cls-5 {
+	fill: #97c932;
+}
+.cls-14 {
+	stroke: #f8d939;
+}
+.cls-6 {
+	fill: #f8d939;
+}
+.cls-7 {
+	fill: #fff;
+}
+.cls-8 {
+	fill: #2aab39;
+}
+.cls-15 {
+	stroke: #d6e20e;
+}
+.cls-16 {
+	stroke: #97c932;
+}
+.cls-17 {
+	stroke: #2ca6e0;
+}
+.cls-9 {
+	fill: #f29600;
+}
+.cls-18 {
+	stroke: #2aab39;
+}
+.cls-19 {
+	stroke: #ff9fd4;
+}
+.cls-10 {
+	fill: #00caff;
+}
+.cls-20 {
+	stroke: #00caff;
+}
+.cls-11 {
+	fill: #e95711;
+}
+svg {
+	padding-top: 100px;
+	width: 100%;
+	padding-left: 5%;
+}
+path:hover {
+	cursor: pointer;
+	fill-opacity: 0.7;
+}
+.svg-container {
+    position: relative;
+    width: 100%;
+
+}
+.top-text {
+    position: absolute;
+    top: 120px;
+	font-size: 2rem;
+	left: 5%;
+	font-weight: bold;
+}
+.intro-text {
+	position: absolute;
+	text-decoration: underline;
+	font-size: 1.3rem;
+	left: 7%;
+	top: 200px;
+}
+.intro-text_content {
+	position: absolute;
+	font-size: 1.2rem;
+	left: 8%;
+	top: 270px;
+}
+
+/* ------------------------------------------------------------ plan_page ---------------------------------------------------------------------- */
+
+.sort-menu {
+	padding: 10px;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.sort-menu:hover {
+	background-color: #e6e6e6;
+}
+.sort-menu:focus {
+    outline: none;
+    border-color: #007bff;
+}
+.sort-form {
+	width: 40%;
+	display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.plan_container {
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+}
+.plan_content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.plan_title {
+    font-size: 25px;
+    font-weight: bold;
+    flex: 1 1 100%;
+    position: relative;
+}
+.official_mark {
+    background-color: #ff4500;
+    color: #fff;
+    padding: 2px 5px;
+    position: absolute;
+    left: 0;
+    top: 45%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    border-radius: 3px;
+}
+.plan_title.has_official_mark {
+    padding-left: 40px;
+}
+.plan_date, .plan_money, .plan_traffic {
+    flex: 1 1 calc(33.33% - 20px);
+}
+.plan_details {
+    display: flex;
+    align-items: center;
+}
+.plan_image img {
+    max-width: 100%;
+	width: 18vw;
+    border-radius: 5px;
+}
+.plan_spot {
+	font-size: 1.2rem;
+	margin-left: 40px;
+	line-height: 2.5;
+}
+.plan_body {
+    flex: 1 1 100%;
+    margin-top: 15px;
+}
+.plan_image img {
+    width: 25vw;
+	/* height: 20vh; */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.plan_maker {
+	font-weight: bold;
+	flex: 1 1 100%;
+	text-align: right;
+}
+.delete-button {
+	cursor: pointer;
+	background-color: #DC143C;
+	border: 1px solid #000000;
+	color: #fff;
+	font-size: larger;
+	text-align: center;
+	width: 3%;
+	height: 30px;
+    margin-left: 72%;
+    display: block;
+}
+
+
+/* ------------------------------------------------------------ planMake ----------------------------------------------------------------------- */
+.title {
+	padding: 130px 0 20px 11%;
+	font-size: 2rem;
+	font-weight: bold;
+}
+form {
+	width: 78%;
+	margin: 0 auto;
+	border-radius: 15px;
+	border: 1px solid #000000;
+	background-color: #f5f5f5;
+	text-align: center;
+}
+label {
+    display: block;
+    text-align: left;
+    margin: 10px 0;
+    font-weight: bold;
+}
+#form label {
+    width: 80%;
+    margin: 10px auto;
+    display: block;
+}
+.error_text {
+	color: red;
+	text-align: left;
+	margin: 0 10%;
+	width: 80%;
+}
+
+/* プラン名 */
+#title {
+    width: 80%;
+    margin: 10px auto;
+    display: block;
+}
+
+/* エリア、滞在日数、予算、主な移動手段 */
+#area, #date, #money, #traffic {
+    width: 48%;
+    margin: 10px 1%;
+    display: inline-block;
+}
+label[for="area"], label[for="date"], label[for="money"], label[for="traffic"] {
+    width: 48%;
+    margin: 10px 1%;
+    display: inline-block;
+    text-align: left;
+}
+
+/* 主なスポット */
+#input2 {
+    width: 70%;
+    margin: 10px auto;
+    display: inline-block;
+}
+.addButton {
+    display: inline-block;
+    margin: 10px 5px;
+    cursor: pointer;
+}
+.removeButton {
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+}
+.arrow {
+    margin: 0 10px;
+    display: inline;
+}
+
+/* プラン紹介 */
+textarea {
+    width: 80%;
+    margin: 10px auto;
+    display: block;
+}
+
+/* 写真 */
+#image {
+    margin: 10px 10%;
+    display: block;
+}
+#preview {
+	margin: 0 10%;
+}
+
+/* ボタン */
+#btn {
+	cursor: pointer;
+	background-color: #2ca6e0;
+	border: 1px solid #8DD3FA;
+	color: #fff;
+	font-size: larger;
+	width: 20%;
+	height: 30px;
+    margin: 20px auto 10px auto;
+    display: block;
+}
+#btn_back {
+	cursor: pointer;
+	background-color: #DC143C;
+	border: 1px solid #c30;
+	color: #fff;
+	font-size: larger;
+	width: 20%;
+	height: 30px;
+    margin: 10px auto 20px auto;
+    display: block;
+}
+
+
+/* ------------------------------------------------------------ planConfirm -------------------------------------------------------------------- */
+.confirm_p {
+	margin: 0 10%;
+}
+.confirm_spot {
+	margin: 0 10%;
+	text-align: left;
+}
+
+/* ------------------------------------------------------------ planComplete ------------------------------------------------------------------- */
+.complete-box {
+    text-align: center;
+}
+
+.complete-box p {
+	text-align: center;
+	font-weight: bold;
+    font-size: 2rem;
+    margin: 100px 0;
+    line-height: 1.6;
+}
+
+.to_toppage {
+    display: inline-block;
+    background-color: #26A9F2; /* 青色の背景 */
+    padding: 10px 20px;
+	margin-bottom: 50px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.to_toppage:hover {
+    background-color: #1b7cb3; /* ホバー時の色を少し暗く */
+}
+
+.to_toppage p {
+    color: #ffffff;
+    font-size: 18px;
+    margin: 0;
+}
+
+
+/* ------------------------------------------------------------ diaryIndex --------------------------------------------------------------------- */
+.title_diary {
+	padding: 130px 0 0 20%;
+	font-size: 2.3rem;
+	font-weight: bold;
+}
+.diary_container {
+	background-image: url('/image/nikki backimage.webp');
+	background-size: cover; /* 画像をコンテナに合わせてリサイズ */
+    background-repeat: no-repeat; /* 画像を繰り返さない */
+    background-position: center center; /* 画像を中央に配置 */
+    background-color: #f5f5f5;
+	border: 2px solid #2ca6e0;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+	position: relative;
+}
+.diary_container::before {
+    content: "";
+    background-image: url('/image/nikki backimage.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.5; /* 透明度を調整。0.5は50%の透明度 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; /* 背景をコンテンツの下に配置 */
+}
+.diary-button {
+    width: 10%;
+    height: 50px;
+    background-color: #DC143C;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    font-size: 1.5rem;
+    display: block;
+    text-align: center;
+	margin-left: 71%;
+    line-height: 50px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.diary-button:hover {
+    background-color: #b0102a;
+}
+.diary_title {
+	color: #000000;
+    font-size: 25px;
+    font-weight: bold;
+    flex: 1 1 100%;
+    position: relative;
+}
+.diary_area, .diary_date {
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+/* ------------------------------------------------------------ diaryDetail -------------------------------------------------------------------- */
+.diary_area2, .diary_date2 {
+    font-size: 1.5rem;
+    width: 100%;
+}
+.diary_container2 {
+	background-image: url('/image/nikki backimage2.jpg');
+	background-size: cover; /* 画像をコンテナに合わせてリサイズ */
+    background-repeat: no-repeat; /* 画像を繰り返さない */
+    background-position: center center; /* 画像を中央に配置 */
+	border: 2px solid #2ca6e0;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+}
+.day_section {
+    margin: 20px 0;
+    border-top: 2px solid #2ca6e0;
+    padding-top: 20px;
+}
+.diary_summary {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #DC143C;
+    margin-bottom: 10px;
+}
+.diary_body,  .diary_body p{
+	font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0 20px;
+}
+.diary_image {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+.diary_image img {
+    width: 45%;
+	height: 40vh;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------------------------------------------------ diaryMake ---------------------------------------------------------------------- */
+#area2 {
+	margin: 10px 10%;
+}
+#image1, #image2 {
+    margin: 10px 10%;
+    display: block;
+}
+#preview1, #preview2 {
+	margin: 0 10%;
+}
+
+/* ------------------------------------------------------------ diaryConfirm ------------------------------------------------------------------- */
+.diary-preview {
+	margin: 0 10%;
+}
+
+/* ------------------------------------------------------------ レスポンシブ -------------------------------------------------------------------- */
+@media only screen and (max-width: 780px) {
+    .intro-text {
+        top: 170px;
+    }
+    .intro-text_content {
+        font-size: 1rem;
+        top: 220px;
+    }
+    svg {
+        margin-top: 40%;
+    }
+
+    .title, .title_diary {
+        padding-top: 110px;
+        font-size: 1.5rem;
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
+    .sort-form {
+        width: 100%;
+        flex-direction: column;
+    }
+    .sort-menu {
+        width: 90%;
+        margin: 10px auto;
+    }
+    .plan_container {
+        padding: 10px;
+    }
+    .plan_content {
+        flex-direction: column;
+    }
+    .plan_date, .plan_money, .plan_traffic {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+    .plan_details {
+        flex-direction: column;
+    }
+    .plan_image img {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .plan_spot {
+        margin-left: 0;
+    }
+    .delete-button {
+        width: 50%;
+        margin-left: 25%;
+    }
+    .diary_container, .diary_container2 {
+        padding: 10px;
+    }
+    .diary_title {
+        text-align: center;
+    }
+    .diary_area, .diary_date, .diary_area2, .diary_date2 {
+        text-align: center;
+    }
+    .day_section {
+        margin: 10px 0;
+    }
+    .diary_body, .diary_body p {
+        margin: 0 10px;
+    }
+    .diary_image img {
+        width: 100%;
+        margin: 10px 0;
+    }
+    #area2, #image1, #image2 {
+        margin: 10px 5%;
+    }
+
+    #btn {
+        width: 50%;
+        margin-left: 25%;
+    }
+    #btn_back {
+        width: 50%;
+        margin-left: 25%;
+    }
+}

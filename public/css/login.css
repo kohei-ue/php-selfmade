@@ -1,0 +1,153 @@
+body {
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)),
+        url("/image/login.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+}
+form {
+    width: 60%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    margin: 0 auto;
+    padding: 15px; /* フォームの内側の余白を追加 */
+    box-sizing: border-box; /* paddingを含むサイズにする */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logo {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.logo img {
+    width: 150px;
+    height: 130px;
+    padding: 50px 0 0 10%;
+}
+.logo_text {
+    padding: 50px 20% 0 0;
+    font-size: 3.5rem;
+    font-weight: bold;
+    font-family: 'Irish Grover', cursive; 
+}
+.logo_text span {
+    margin-left: 25px;
+}
+h3 {
+    width: 80%;
+    text-align: left;
+    margin-bottom: 0;
+}
+.login_input, .login {
+    width: 80%;
+    margin: 20px 0;
+    text-align: center;
+}
+.login {
+    height: 30px;
+    background-color: #DC143C;
+    color: #ffffff;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+.login_input {
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 0;
+    background-color: #f5f5f5;
+    text-align: left;
+}
+.to-register {
+    color: blue;
+    align-self: flex-end; /* formの右端に配置 */
+    margin-right: 5%;
+}
+
+/* register~ */
+
+h2 {
+    margin-bottom: 20px;
+}
+.radio-group {
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
+    gap: 10px;
+}
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+.register, .back_to_login {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #DC143C;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+.back_to_login {
+    background-color: #007BFF;
+}
+.register:hover, .back_to_login:hover {
+    background-color: darkgray;
+}
+.error_text {
+    color: red;
+}
+
+/* register_comp */
+.regi_comp {
+    width: 60%;
+    height: 60%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1 {
+    margin: 50px 0;
+    text-align: center;
+    line-height: 2.5; /* 文字列の間隔を大きくする */
+}
+h2 {
+    font-size: 2rem;
+    letter-spacing: 5px; /* 文字間隔を広くする */
+    text-align: center;
+    margin-top: 20px;
+}
+.go_to_login {
+    width: 40%;
+    height: 50px;
+    background-color: #DC143C;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    font-size: 1.5rem;
+    display: block;
+    text-align: center;
+    line-height: 50px;
+    margin: 0 auto;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.go_to_login:hover {
+    background-color: #b0102a;
+}
