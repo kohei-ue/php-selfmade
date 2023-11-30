@@ -2,13 +2,14 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/css/plan.css">
+    <link rel="stylesheet" type="text/css" href="/css/diary.css">
     <title>diary</title>
+    <script src="https://kit.fontawesome.com/9292378248.js" crossorigin="anonymous"></script>
 </head>
 <body>
     @include('layouts.header')
     <main>
-        <div class="title_diary">旅日記</div>
+        <div class="title_diary"><i class="fa-solid fa-book fa-spin fa-lg"></i></i> 旅日記</div>
         <a href="{{ route('travels.diaryMake') }}" class="diary-button">旅日記を書く</a>
         @foreach($diaries as $diary)
         <div class="diary_container">

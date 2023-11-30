@@ -33,9 +33,9 @@ body {
 	box-sizing: border-box;
 }
 
-/* 上の部分は気にせずここから書く */
 .top-img {
-    position: relative;
+    /* position: relative; */
+    position: absolute;
     width: 100%;
 }
 .top-img img {
@@ -50,52 +50,115 @@ body {
     font-weight: bold;
     font-size: 3.6rem;
     top: 45%;
-    right: 12%;
+    right: 18%;
     line-height: 65px;
 }
 .top-text span {
     margin-left: 50px;
     color: #26A9F2;
 }
+.image-name {
+    position: absolute;
+    font-size: 1.3rem;
+    font-weight: bold;
+    left: 20%;
+    bottom: 7%;
+    color: #ffffff;
+    padding: 5px;
+    border-radius: 5px;
+}
 
 .intro-text {
     width: 90%;
-    font-size: 18px;
-    margin: 40px auto;
+    font-size: 20px;
+    margin: 60px auto 100px auto;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     color: #333; /* ややダークなテキストカラー */
     text-align: justify;
     line-height: 1.6;
 }
 
-/* 新しいスタイルの追加 */
+/* Open Weather */
 
-.section-container {
+#weather-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     width: 90%;
-    margin: 40px auto;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #9dd4f2;
+    border-radius: 8px;
+}
+#weather-info h4 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+#weather-info p {
+    text-align: center;
+    margin: 5px 0;
+    font-size: 24px;
+}
+
+.weather-city {
+    text-align: center;
+    margin: 0 10px;
+}
+
+.weather-city img {
+    width: 80px;
+    height: 80px;
+    margin: 3px auto;
+}
+
+.weather-city p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* 新しいスタイルの追加 */
+.section-container {
+    width: 88%;
+    margin: 100px auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 2rem;
-    transform: translateY(50px); /* 初期状態で少し下に移動 */
-    opacity: 0; /* 初期状態では透明 */
-    transition: transform 0.5s, opacity 0.5s; /* アニメーションの効果 */
+    transform: translateY(50px);
+    /* opacity: 0;
+    transition: transform 0.5s, opacity 0.5s; */
 }
 
 .reverse-order {
+    display: flex;
     flex-direction: row-reverse;
 }
+.reverse-content {
+    flex: 2;
+    padding: 20px;
+}
 .reverse-img {
-    margin-right: 300px;
+    flex: 1;
+    max-width: 400px;
+    position: relative;
+}
+.reverse-img img {
+    width: 100%;
+    transform: translateX(-55%);
 }
 
 .section-img {
     flex: 1;
     max-width: 400px;
+}
+.section-img img {
+    width: 50vw;
+    height: 60vh;
 }
 
 .section-content {
@@ -128,6 +191,91 @@ body {
     background-color: #1b7cb3;
 }
 
+/* Luxy */
+.outer-block img {
+    border: 0;
+    /* margin: 0; */
+    vertical-align: top;
+    max-width: 100%;
+}
+.outer-block {
+    height: 100vh;
+    position: relative;
+}
+/* 奥にあるくっきりとした葉 */
+.leaves {
+    position: absolute;
+    width: 22vw;
+    max-width: 600px;
+}
+.leaves01 {
+    left: 4vw;
+    bottom: 20vw;
+}
+.leaves02 {
+    right: -80px;
+    top: 25vw;
+}
+/* 手前にあるぼかしのかかった葉 */
+.leaves-b {
+    position: relative;
+    width: 22vw;
+    /* max-width: 600px; */
+    z-index: 2;
+}
+.leaves-b01 {
+    /* left: -10px; */
+    left: 0;
+    top: 62vh;
+} 
+.leaves-b02 {
+    left: 78vw;
+    top: 22vh;
+} 
+.leaves-b03 {
+    width: 25vw;
+    left: 0;
+    bottom: 70vh;
+}
+.leaves-b04 {
+    left: 78vw;
+    bottom: 112vh;
+}
+
+.bg-section {
+	position: absolute;
+    left: 0;
+    top: 0;
+	width: 100%;
+	height: 100vh;
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-position: center center; 
+    -webkit-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+}
+#bg-section01 {
+    background-image: url("/image/luxy-yoko-fuji.jpg");
+    top: 30vh;
+}
+#bg-section02 {
+    background-image: url("/image/luxy-yoko-hashiguiiwa.jpg");
+    top: 30vh;
+}
+#bg-section03 {
+    background-image: url("/image/luxy-yoko-sado.jpg");
+    top: 50vh;
+}
+#width-section01, #width-section02, #width-section03 {
+    position: relative;
+    z-index: 3;
+    padding: 50vh 0 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+
 @media only screen and (max-width: 780px) {
     .top-img img {
         width: 100%;
@@ -151,5 +299,12 @@ body {
     .section-img img {
         width: 100%;
         order: -1; /* .section-imgを.section-contentの上に移動 */
+    }
+    .reverse-order {
+        flex-direction: column-reverse;
+    }
+    .reverse-img img {
+        position: static;
+        transform: none;
     }
 }

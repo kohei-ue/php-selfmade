@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="/css/plan.css">
     <title>{{ $name }}のプラン</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -76,8 +77,17 @@
                         作成者：{{ $plan->user->name }}
                     </div>
                 @endif
-                <div class="like-button" data-plan-id="{{ $plan->id }}">
-                    いいね {{ $plan->likes_count }}
+                <div>
+                    <span>
+                        <a onclick="incrementLikeCount(this)" class="btn btn-secondary btn-sm">
+                        <img src="{{asset('image/nicebutton.png')}}" width="30px">
+                            いいね
+                            <!-- 「いいね」の数を表示 -->
+                            <span class="badge like-count">
+                                0
+                            </span>
+                        </a>
+                    </span>
                 </div>
             </div> 
         </div>
@@ -91,17 +101,17 @@
         function confirmDelete() {
             return confirm('このプランを削除しますか？');
         }
-
-        $('.like-button').click(function() {
-            var planId = $(this).data('plan-id');
-            $.ajax({
-                url: '/like/' + planId,
-                type: 'POST',
-                success: function(response) {
-                    // いいねの数を更新
-                }
-            });
-        });
+        function incrementLikeCount(button) {
+            // ボタン内の「いいね」の数を表示する要素を取得
+            const likeCountElement = button.querySelector('.like-count');
+            
+            // 現在の「いいね」の数を取得して1増やす
+            const currentCount = parseInt(likeCountElement.textContent, 10);
+            const newCount = currentCount + 1;
+            
+            // 新しい「いいね」の数を表示
+            likeCountElement.textContent = newCount;
+        }
     </script>
     @include('layouts.footer')
 </html>

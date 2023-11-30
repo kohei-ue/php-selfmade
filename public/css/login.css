@@ -73,10 +73,13 @@ h3 {
 }
 
 /* register~ */
-
-h2 {
-    margin-bottom: 20px;
+.register_title {
+    font-size: 32px;
+    font-weight: bold;
 }
+/* h2 {
+    margin-bottom: 20px;
+} */
 .radio-group {
     display: flex;
     justify-content: flex-start;
@@ -107,6 +110,10 @@ h2 {
 }
 .error_text {
     color: red;
+}
+.go_to_register_ad {
+    font-weight: bold;
+    margin: 10px 0 0 47%;
 }
 
 /* register_comp */

@@ -11,6 +11,7 @@ use App\Http\Requests\DiaryRequest;
 use App\Models\Plan;
 use App\Models\Diary;
 use App\Models\Login;
+use App\Models\Like;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -63,11 +64,13 @@ class TravelController extends Controller
         $plans = $query->get();
 
         $user = Auth::user();
+        // $like=Like::where('plan_id', $plans->id)->where('user_id', auth()->user()->id)->first();
 
         return view('travels.plan_page', [
             'name' => $name,
             'plans' => $plans,
-            'user' => $user, 
+            'user' => $user,
+            // 'likes' => $like
         ]);
     }
 

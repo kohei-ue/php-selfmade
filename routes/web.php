@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\TravelController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ExtraController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/index', [TravelController::class, 'index'])->name('travels.index');
@@ -28,6 +31,8 @@ Route::post('/userLogin', [LoginController::class, 'userLogin'])->name('logins.u
 Route::get('/register', [LoginController::class, 'register'])->name('logins.register');
 Route::post('/userRegister', [LoginController::class, 'userRegister'])->name('logins.userRegister');
 Route::get('/register_comp', [LoginController::class, 'register_comp'])->name('logins.register_comp');
+Route::get('/register_ad', [LoginController::class, 'register_ad'])->name('admins.register_ad');
+Route::post('/register_ad', [LoginController::class, 'userRegister'])->name('admins.userRegisterAd');
 
 Route::get('/adminIndex', [TravelController::class, 'adminIndex'])->name('admins.adminIndex');
 Route::get('/adminUserlist', [TravelController::class, 'adminUserlist'])->name('admins.adminUserlist');
@@ -37,3 +42,14 @@ Route::get('/plan_delete/{id}', [TravelController::class, 'plan_delete'])->name(
 
 Route::get('/prefecture/{name}', [TravelController::class, 'showPlans'])->name('travels.plan_page');
 Route::get('/plans/{name}', [TravelController::class, 'showPlans'])->name('showPlans');
+
+Route::get('/ToNewComer', [ExtraController::class, 'ToNewComer'])->name('extras.ToNewComer');
+Route::get('/bulletinBoard', [ExtraController::class, 'bulletinBoard'])->name('extras.bulletinBoard');
+
+Route::get('/sticky', [ExtraController::class, 'sticky'])->name('extras.sticky');
+
+Route::post('/comment/store', [CommentController::class, 'storeComment'])->name('comment.store');
+Route::delete('/comment/{id}', [CommentController::class, 'deleteComment'])->name('comment.delete');
+
+Route::post('/like/{plan}', [LikeController::class, 'like'])->name('like');
+Route::post('/unlike/{plan}',[LikeController::class,'unlike'])->name('unlike');

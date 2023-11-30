@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/css/plan.css">
+    <link rel="stylesheet" type="text/css" href="/css/diary.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Plan Make</title>
 </head>
@@ -11,7 +11,7 @@
     <main class="plan_main">
         <div class="title">旅日記作成</div>
 
-        <form action="{{ route('travels.diaryMake_submit') }}" method="post" id="form" enctype="multipart/form-data" novalidate>
+        <form action="{{ route('travels.diaryMake_submit') }}" method="post" id="diaryMake_form" enctype="multipart/form-data" novalidate>
         @csrf
         <label for="date">日記題名</label>
         @if($errors->has('title'))

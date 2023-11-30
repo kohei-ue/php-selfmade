@@ -127,7 +127,6 @@ path:hover {
 .svg-container {
     position: relative;
     width: 100%;
-
 }
 .top-text {
     position: absolute;
@@ -148,6 +147,44 @@ path:hover {
 	font-size: 1.2rem;
 	left: 8%;
 	top: 270px;
+    line-height: 2;
+}
+.planIndex_box {
+    position: absolute;
+    border: 2px solid #8DD3FA;
+    background-color: #bff4bf;
+    top: 400px;
+    left: 7%;
+    width: 25%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+.To_newcomer, .box_body, .show_more {
+    font-family: 'Arial', sans-serif; /* フォントのスタイルを設定 */
+}
+.To_newcomer {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.box_body {
+    margin: 0 10px;
+    line-height: 1.8; /* 行間を調整 */
+    padding: 10px; /* 内容に余裕を持たせる */
+}
+.show_more {
+    width: 100%;
+    cursor: pointer;
+    border-bottom: 2px solid #97c932;
+    margin: 10px auto;
+    text-align: center;
+    text-decoration: none; /* 下線を無効にする */
+    color: inherit; /* 親要素から色を継承する */
+    display: inline-block; /* ブロックレベル要素のように振る舞わせる */
+}
+.show_more:hover {
+    text-decoration: underline;
 }
 
 /* ------------------------------------------------------------ plan_page ---------------------------------------------------------------------- */
@@ -407,134 +444,6 @@ textarea {
     color: #ffffff;
     font-size: 18px;
     margin: 0;
-}
-
-
-/* ------------------------------------------------------------ diaryIndex --------------------------------------------------------------------- */
-.title_diary {
-	padding: 130px 0 0 20%;
-	font-size: 2.3rem;
-	font-weight: bold;
-}
-.diary_container {
-	background-image: url('/image/nikki backimage.webp');
-	background-size: cover; /* 画像をコンテナに合わせてリサイズ */
-    background-repeat: no-repeat; /* 画像を繰り返さない */
-    background-position: center center; /* 画像を中央に配置 */
-    background-color: #f5f5f5;
-	border: 2px solid #2ca6e0;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 1200px;
-	position: relative;
-}
-.diary_container::before {
-    content: "";
-    background-image: url('/image/nikki backimage.webp');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    opacity: 0.5; /* 透明度を調整。0.5は50%の透明度 */
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1; /* 背景をコンテンツの下に配置 */
-}
-.diary-button {
-    width: 10%;
-    height: 50px;
-    background-color: #DC143C;
-    color: #ffffff;
-    text-decoration: none;
-    border: none;
-    font-size: 1.5rem;
-    display: block;
-    text-align: center;
-	margin-left: 71%;
-    line-height: 50px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-.diary-button:hover {
-    background-color: #b0102a;
-}
-.diary_title {
-	color: #000000;
-    font-size: 25px;
-    font-weight: bold;
-    flex: 1 1 100%;
-    position: relative;
-}
-.diary_area, .diary_date {
-    font-size: 1.2rem;
-    width: 100%;
-}
-
-/* ------------------------------------------------------------ diaryDetail -------------------------------------------------------------------- */
-.diary_area2, .diary_date2 {
-    font-size: 1.5rem;
-    width: 100%;
-}
-.diary_container2 {
-	background-image: url('/image/nikki backimage2.jpg');
-	background-size: cover; /* 画像をコンテナに合わせてリサイズ */
-    background-repeat: no-repeat; /* 画像を繰り返さない */
-    background-position: center center; /* 画像を中央に配置 */
-	border: 2px solid #2ca6e0;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 1200px;
-}
-.day_section {
-    margin: 20px 0;
-    border-top: 2px solid #2ca6e0;
-    padding-top: 20px;
-}
-.diary_summary {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #DC143C;
-    margin-bottom: 10px;
-}
-.diary_body,  .diary_body p{
-	font-weight: bold;
-    font-size: 1.2rem;
-    margin: 0 20px;
-}
-.diary_image {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-}
-.diary_image img {
-    width: 45%;
-	height: 40vh;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* ------------------------------------------------------------ diaryMake ---------------------------------------------------------------------- */
-#area2 {
-	margin: 10px 10%;
-}
-#image1, #image2 {
-    margin: 10px 10%;
-    display: block;
-}
-#preview1, #preview2 {
-	margin: 0 10%;
-}
-
-/* ------------------------------------------------------------ diaryConfirm ------------------------------------------------------------------- */
-.diary-preview {
-	margin: 0 10%;
 }
 
 /* ------------------------------------------------------------ レスポンシブ -------------------------------------------------------------------- */

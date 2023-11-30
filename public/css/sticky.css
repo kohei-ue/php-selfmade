@@ -1,0 +1,299 @@
+@charset "utf-8";
+
+/*------------------------------------------------------------------------------
+  reset
+------------------------------------------------------------------------------*/
+
+/* html,
+input,
+textarea,
+select,
+button {
+  font-family: "Quicksand", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", Meiryo, sans-serif;
+  font-weight: 500;
+} */
+
+/* IE10以降 游ゴシック文字ずれ対応 */
+/* html.ie10,
+.ie10 input,
+.ie10 textarea,
+.ie10 select,
+.ie10 button,
+html.ie11,
+.ie11 input,
+.ie11 textarea,
+.ie11 select,
+.ie11 button {
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif;
+  font-weight: normal;
+}
+
+html {
+  color: #333;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.6;
+  word-break: break-all;
+} */
+
+body {
+  background: #fff;
+  margin: 0;
+}
+
+/* *,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+} */
+
+img {
+  border: 0;
+  margin: 0;
+  vertical-align: top;
+  max-width: 100%;
+}
+
+/* p {
+  margin: 0;
+  padding: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+input[type="submit"],
+input[type="text"],
+select,
+textarea,
+button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+} */
+
+/* label {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+} */
+
+/* .outer-block {
+  min-width: 1040px;
+}
+
+.inner-block {
+  margin: 0 auto;
+  padding: 40px 0 100px;
+  position: relative;
+  width: 1000px;
+} */
+
+/* #wrapper {
+  position: relative;
+} */
+
+/* .pc {
+  display: block !important;
+}
+
+.pc-ib {
+  display: inline-block !important;
+}
+
+.sp {
+  display: none !important;
+}
+
+.sp-ib {
+  display: none !important;
+} */
+
+@media screen and (min-width: 641px) {
+  a,
+  a:before,
+  a:after,
+  a img:hover,
+  button,
+  .pagenation .page-num-ul li:hover,
+  .pagenation .prev:hover,
+  .pagenation .next:hover,
+  .back-feature:hover {
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+  }
+
+}
+
+/*------------------------------------------------------------------------------
+  anim
+------------------------------------------------------------------------------*/
+
+.mv-block {
+  position: relative;
+}
+
+.mv-ttl {
+  font-size: 50px;
+  font-weight: bold;
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  left: 0;
+  right: 0;
+  margin: auto;
+  letter-spacing: 0.1em;
+  top: 27px;
+}
+
+/* .mv-area {
+  height: 100vh;
+  width: 100vw;
+  background: #87ceeb;
+  position: relative;
+} */
+
+.mv-area .skater {
+  width: 50vw;
+  height: 40vw;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  position: absolute;
+  margin: auto;
+}
+
+.mv-area .skater img {
+  width: 100%;
+}
+
+/* .mv-area::before,
+.mv-area::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 70px;
+  background: #fff;
+  left: 0;
+  z-index: 2;
+} */
+
+/* .mv-area::before {
+  top: 0;
+}
+
+.mv-area::after {
+  bottom: 0;
+} */
+
+.mv-side {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.mv-side::before,
+.mv-side::after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 100%;
+  background: #fff;
+  top: 0;
+  z-index: 1;
+}
+
+.mv-side::before {
+  left: 0;
+}
+
+.mv-side::after {
+  right: 0;
+}
+
+
+.leaves {
+  position: absolute;
+  width: 26vw;
+  max-width: 600px;
+}
+
+.leaves01 {
+  left: -80px;
+  bottom: 25vw;
+}
+
+.leaves02 {
+  right: -80px;
+  top: 25vw;
+}
+
+.leaves-b {
+  position: absolute;
+  width: 30vw;
+  max-width: 600px;
+  z-index: 2;
+}
+
+.leaves-b01 {
+  left: -10px;
+  bottom: -10px;
+}
+
+.leaves-b02 {
+  right: -10px;
+  bottom: -10px;
+}
+
+.leaves-b03 {
+  left: -10px;
+  top: -10px;
+}
+
+.leaves-b04 {
+  right: -10px;
+  top: -10px;
+}

@@ -36,6 +36,7 @@ class LoginController extends Controller
             return redirect()->route('logins.login');
         }
     }
+
     public function register() {
         return view('logins.register');
     }
@@ -43,7 +44,8 @@ class LoginController extends Controller
         $name = $request->input('name');
         $email = $request->input('email');
         $password = $request->input('password');
-        $role = $request->input('role');
+        // フォームから直接role値を受け取るのではなく、登録フォームに応じてroleを設定
+        $role = $request->path() == 'register_ad' ? 0 : 1; // 'register_ad'からの登録の場合roleは0、それ以外は1
 
         // ユーザー登録処理
         User::create([
@@ -57,6 +59,10 @@ class LoginController extends Controller
     }
     public function register_comp() {
         return view('logins.register_comp');
+    }
+
+    public function register_ad() {
+        return view('admins.register_ad');
     }
 
     public function logout() {
