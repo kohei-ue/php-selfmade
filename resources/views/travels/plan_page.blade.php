@@ -7,7 +7,7 @@
     <title>{{ $name }}のプラン</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body>
+<body id="plan_page_body">
     @include('layouts.header')
     <main>
         <div class="title">{{ $name }}のプラン</div>
@@ -56,6 +56,7 @@
                 <div class="plan_details">
                     <div class="plan_image">
                         <img src="{{ asset('storage/' . $plan->image) }}" alt="{{ $plan->title }}">
+                        <!-- <img src="image/kyoto temple.jpg" alt="{{ $plan->title }}"> -->
                     </div>
                     <div class="plan_spot">
                         <?php
@@ -79,14 +80,14 @@
                 @endif
                 <div>
                     <span>
-                        <a onclick="incrementLikeCount(this)" class="btn btn-secondary btn-sm">
-                        <img src="{{asset('image/nicebutton.png')}}" width="30px">
-                            いいね
+                    <iframe src="/favorite/{{$plan->id}}" width="200px" height="50px" id="iframe" scrolling="no" style="border:none;"></iframe>
+                        <!-- <a onclick="incrementLikeCount(this)" class="btn btn-secondary btn-sm"> -->
+                            <!-- <img src="{{asset('image/nicebutton.png')}}" width="30px"> -->
                             <!-- 「いいね」の数を表示 -->
-                            <span class="badge like-count">
+                            <!-- <span class="badge like-count">
                                 0
-                            </span>
-                        </a>
+                            </span> -->
+                        <!-- </a> -->
                     </span>
                 </div>
             </div> 
@@ -101,16 +102,32 @@
         function confirmDelete() {
             return confirm('このプランを削除しますか？');
         }
-        function incrementLikeCount(button) {
-            // ボタン内の「いいね」の数を表示する要素を取得
-            const likeCountElement = button.querySelector('.like-count');
+        // function incrementLikeCount(button) {
+        //     // ボタン内の「いいね」の数を表示する要素を取得
+        //     const likeCountElement = button.querySelector('.like-count');
             
-            // 現在の「いいね」の数を取得して1増やす
-            const currentCount = parseInt(likeCountElement.textContent, 10);
-            const newCount = currentCount + 1;
+        //     // 現在の「いいね」の数を取得して1増やす
+        //     const currentCount = parseInt(likeCountElement.textContent, 10);
+        //     const newCount = currentCount + 1;
             
-            // 新しい「いいね」の数を表示
-            likeCountElement.textContent = newCount;
+        //     // 新しい「いいね」の数を表示
+        //     likeCountElement.textContent = newCount;
+        // }
+        function like(planId) {
+            // console.log("動いてる？");
+            $.ajax({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+                url: '/like/${planId}',
+                type: "POST",
+            })
+            .done(function(data, status, xhr) {
+                console.log(data);
+            })
+            .fail(function(xhr, status, error) {
+                console.log();
+            });
         }
     </script>
     @include('layouts.footer')

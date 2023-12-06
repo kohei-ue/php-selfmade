@@ -188,7 +188,9 @@ path:hover {
 }
 
 /* ------------------------------------------------------------ plan_page ---------------------------------------------------------------------- */
-
+#plan_page_body {
+    background-image: url("/image/background.jpg");
+}
 .sort-menu {
 	padding: 10px;
     margin: 0 10px;
@@ -217,7 +219,7 @@ path:hover {
     margin: 20px auto;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     max-width: 1000px;
 }
 .plan_content {
@@ -278,14 +280,14 @@ path:hover {
 	text-align: right;
 }
 .delete-button {
-	cursor: pointer;
-	background-color: #DC143C;
-	border: 1px solid #000000;
-	color: #fff;
-	font-size: larger;
-	text-align: center;
-	width: 3%;
-	height: 30px;
+    cursor: pointer;
+    background-color: #DC143C;
+    border: 1px solid #000000;
+    color: #fff;
+    font-size: larger;
+    text-align: center;
+    width: 60px;
+    height: 30px;
     margin-left: 72%;
     display: block;
 }

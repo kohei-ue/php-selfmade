@@ -32,32 +32,55 @@ class TravelController extends Controller
     public function showPlans($name)
     {
         // dd(request()->all());
-    
+
         $prefecture = urldecode($name);
         $query = Plan::where('area', $prefecture);
 
         // ソートの処理
-        if (request()->has('sort_by')) {
-            $sortBy = request('sort_by');
-            $order = request('order', 'asc');
+        // if (request()->has('sort_by')) {
+        if (!empty($_GET['?sort_by'])) {
+            // $sortBy = request('sort_by');
+            // $order = request('order', 'asc');
+            $sortBy = $_GET['?sort_by'];
+            $order = $_GET['order'];
 
             switch ($sortBy) {
                 case 'date':
-                    $orderValues = ["日帰り", "一泊二日", "二泊三日", "三泊四日", "四泊五日", "五泊六日", "六泊以上"];
-                    $query->orderByRaw("FIELD(date, ?)", [$orderValues]);
-                    break;
+                    if($_GET['order']=='asc'){
+                        $query = Plan::where('area', $prefecture)->orderByRaw("FIELD (date, '日帰り', '一泊二日', '二泊三日', '三泊四日', '四泊五日', '五泊六日', '六泊以上')");
+                    // $orderValues = ["日帰り", "一泊二日", "二泊三日", "三泊四日", "四泊五日", "五泊六日", "六泊以上"];
+                    // $query->orderByRaw("FIELD(date, ?)", [$orderValues]);
+                        break;
+                    }else{
+                        $query = Plan::where('area', $prefecture)->orderByRaw("FIELD (date, '六泊以上' , '五泊六日' , '四泊五日' , '三泊四日' , '二泊三日' , '一泊二日' , '日帰り')");
+                        break;
+                    }
                 case 'money':
-                    $orderValues = ["~5000円", "5000~10000円", "10001~20000円", "20001~30000円", "30001~40000円", "40001~50000円", "50001~60000円", "60001~70000円", "70001~80000円", "80001~90000円", "90001~100000円", "100001円以上"];
-                    $query->orderByRaw("FIELD(money, ?)", [$orderValues]);
-                    break;
+                    if($_GET['order']=='asc'){
+                    // $orderValues = ["~5000円", "5000~10000円", "10001~20000円", "20001~30000円", "30001~40000円", "40001~50000円", "50001~60000円", "60001~70000円", "70001~80000円", "80001~90000円", "90001~100000円", "100001円以上"];
+                    // $query->orderByRaw("FIELD(money, ?)", [$orderValues]);
+                    $query = Plan::where('area', $prefecture)->orderByRaw("FIELD(money, '~5000円', '5000~10000円', '10001~20000円', '20001~30000円', '30001~40000円', '40001~50000円', '50001~60000円','60001~70000円','70001~80000円','80001~90000円','90001~100000円','100001円以上')");
+                        break;
+                    }else{
+                        $query = Plan::where('area', $prefecture)->orderByRaw("FIELD(money,'100001円以上','90001~100000円','80001~90000円','70001~80000円','60001~70000円','50001~60000円','40001~50000円', '30001~40000円', '20001~30000円','10001~20000円','5000~10000円', '~5000円')");
+                        break;
+                    }
                 case 'traffic':
-                    $orderValues = ["徒歩", "電車、鉄道メイン", "バスメイン", "車(レンタカー)メイン"];
-                    $query->orderByRaw("FIELD(traffic, ?)", [$orderValues]);
+                    if($_GET['order']=='asc'){
+                    // $orderValues = ["徒歩", "電車、鉄道メイン", "バスメイン", "車(レンタカー)メイン"];
+                    // $query->orderByRaw("FIELD(traffic, ?)", [$orderValues]);
+                    $query = Plan::where('area', $prefecture)->orderByRaw("FIELD (traffic, '車(レンタカー)メイン', 'バスメイン' , '電車、鉄道メイン' ,'徒歩')");
                     break;
+                    }else{
+                        $query = Plan::where('area', $prefecture)->orderByRaw("FIELD (traffic, '徒歩' , '電車、鉄道メイン' , 'バスメイン' , '車(レンタカー)メイン')");
+                        break;
+                    }
                 default:
                     $query->orderBy($sortBy, $order);
                     break;
                 }
+            }else{
+                $query = Plan::where('area', $prefecture);
             }
         // dd($query->toSql());
 

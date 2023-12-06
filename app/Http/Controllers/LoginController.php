@@ -20,7 +20,7 @@ class LoginController extends Controller
     public function login() {
         return view('logins.login');
     }
-    public function userlogin(LoginRequest $request) {
+    public function userLogin(LoginRequest $request) {
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {

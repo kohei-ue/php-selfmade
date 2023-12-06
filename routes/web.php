@@ -51,5 +51,5 @@ Route::get('/sticky', [ExtraController::class, 'sticky'])->name('extras.sticky')
 Route::post('/comment/store', [CommentController::class, 'storeComment'])->name('comment.store');
 Route::delete('/comment/{id}', [CommentController::class, 'deleteComment'])->name('comment.delete');
 
-Route::post('/like/{plan}', [LikeController::class, 'like'])->name('like');
-Route::post('/unlike/{plan}',[LikeController::class,'unlike'])->name('unlike');
+Route::get('/favorite/{plan_id}',[LikeController::class,'index']);
+Route::post('/favorite/{plan_id}',[LikeController::class,'like']);
