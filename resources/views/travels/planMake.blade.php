@@ -32,13 +32,13 @@
         </ul>
     </div>
 @endif
-        <label for="date">プラン名</label>
+        <label for="date" class="planMake_label">プラン名</label>
         @if($errors->has('title'))
             <div class="error_text">{{ $errors->first('title') }}</div>
         @endif
         <input type="text" id="title" name="title" value="{{ old('title', $data['title'] ?? '') }}">
 
-        <label for="date">エリア</label>
+        <label for="date" class="planMake_label">エリア</label>
         @if($errors->has('area'))
             <div class="error_text">{{ $errors->first('area') }}</div>
         @endif
@@ -93,7 +93,7 @@
             <option value="沖縄県">沖縄県</option>
         </select>
             
-        <label for="date">滞在日数</label>
+        <label for="date" class="planMake_label">滞在日数</label>
         @if($errors->has('date'))
             <div class="error_text">{{ $errors->first('date') }}</div>
         @endif
@@ -108,7 +108,7 @@
             <option value="六泊以上" {{ old('date', $data['date'] ?? '') == '六泊以上' ? 'selected' : '' }}>６泊以上</option>
         </select>
            
-        <label for="date">予算</label>
+        <label for="date" class="planMake_label">予算</label>
         @if($errors->has('money'))
             <div class="error_text">{{ $errors->first('money') }}</div>
         @endif
@@ -128,7 +128,7 @@
             <option value="100001円以上">100001円以上</option>
         </select>
 
-        <label for="traffic">主な移動手段</label>
+        <label for="traffic" class="planMake_label">主な移動手段</label>
         @if($errors->has('traffic'))
             <div class="error_text">{{ $errors->first('traffic') }}</div>
         @endif
@@ -144,7 +144,7 @@
             <option value="車(レンタカー)メイン＋飛行機">車(レンタカー)メイン＋飛行機</option>
         </select>
 
-        <label for="spot">主なスポット</label>
+        <label for="spot" class="planMake_label">主なスポット</label>
         @if($errors->has('spot'))
             <div class="error_text">{{ $errors->first('spot') }}</div>
         @endif
@@ -169,13 +169,13 @@
             @endforeach
         </div>
 
-        <label for="body">プラン紹介</label>
+        <label for="body" class="planMake_label">プラン紹介</label>
         @if($errors->has('body'))
             <div class="error_text">{{ $errors->first('body') }}</div>
         @endif
         <textarea name="body" cols="30" rows="10"></textarea>
 
-        <label for="image">写真</label>
+        <label for="image" class="planMake_label">写真</label>
         <input type="file" id="image" name="image" onchange="previewImage(this);">
         <img id="preview" src="{{ $data['image'] ?? '' }}" alt="プレビュー画像" style="max-width:200px; {{ isset($data['image']) ? '' : 'display:none;' }}">
         <!-- <img id="preview" src="{{ $data['image'] ?? '' }}" alt="プレビュー画像" style="max-width:200px; {{ isset($data['image']) ? '' : 'display:none;' }}"> -->

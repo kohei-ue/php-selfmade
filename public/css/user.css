@@ -1,0 +1,137 @@
+@charset "UTF-8";
+/* reset */
+h1, h2, ul, li {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    list-style-type: none;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin-top: 100px;
+}
+
+.info_title {
+    font-size: 2rem;
+    margin: 0 0 20px 10%;
+    font-weight: bold;
+}
+.info_index {
+    font-size: 1.3rem;
+    margin-left: 11%;
+    font-weight: bold;
+}
+.info_detail {
+    width: 78%;
+    font-size: 1.1rem;
+    margin: 0 0 20px 11%;
+    border-bottom: 3px solid pink;
+}
+#done_good {
+    margin-top: 30px;
+}
+
+.plan_container {
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    max-width: 1000px;
+}
+.plan_content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.edit-button {
+    background-color: steelblue;
+    font-size: large;
+    height: 36px;
+    margin-left: 45vw;
+}
+
+.plan_content input {
+    font-size: 100%;
+}
+.plan_title input {
+    width: 70vw;
+}
+.plan_spot input {
+    width: 40vw;
+}
+.plan_body textarea {
+    font-size: 100%;
+    width: 70vw;
+}
+.plan_content button {
+    margin-left: 45vw;
+}
+
+
+.plan_title {
+    font-size: 25px;
+    font-weight: bold;
+    flex: 1 1 100%;
+    position: relative;
+}
+.official_mark {
+    background-color: #ff4500;
+    color: #fff;
+    padding: 2px 5px;
+    position: absolute;
+    left: 0;
+    top: 45%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    border-radius: 3px;
+}
+.plan_title.has_official_mark {
+    padding-left: 40px;
+}
+.plan_date, .plan_money, .plan_traffic {
+    flex: 1 1 calc(33.33% - 20px);
+}
+.plan_details {
+    display: flex;
+    align-items: center;
+}
+.plan_image img {
+    max-width: 100%;
+    width: 18vw;
+    border-radius: 5px;
+}
+.plan_spot {
+    font-size: 1.2rem;
+    margin-left: 40px;
+    line-height: 2.5;
+}
+.plan_body {
+    flex: 1 1 100%;
+    margin-top: 15px;
+}
+.plan_image img {
+    width: 25vw;
+    /* height: 20vh; */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.plan_maker {
+    font-weight: bold;
+    flex: 1 1 100%;
+    text-align: right;
+}
+.delete-button {
+    cursor: pointer;
+    background-color: #DC143C;
+    border: 1px solid #000000;
+    color: #fff;
+    font-size: larger;
+    text-align: center;
+    width: 60px;
+    height: 30px;
+    margin-left: 72%;
+    display: block;
+}

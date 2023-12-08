@@ -209,6 +209,7 @@ body {
     max-width: 600px;
 }
 .leaves01 {
+    position: fixed;
     left: 4vw;
     bottom: 20vw;
 }

@@ -11,7 +11,7 @@
 <header class="header">
     <div class="logo">
         <a href="{{ route('travels.index') }}">
-            <img src="/image/Tabi Notes.jpg">
+            <img src="/image/tabinotes.gif">
             <div class="header_text">Tabi Notes</div>
         </a>
     </div>
@@ -27,8 +27,14 @@
             <li><a href="{{ route('travels.planIndex') }}">プラン一覧</a></li>
             <li><a href="{{ route('travels.planMake') }}">プラン作成</a></li>
             <li><a href="{{ route('travels.diaryIndex') }}">旅日記</a></li>
+            <li><a href="{{ route('extras.bulletinBoard') }}">掲示板</a></li>
         </ul>
     </nav>
+    @if(Auth::check())
+    <div class="to_userInfo">
+        <a href="{{ route('users.userInfo', ['user_id' => Auth::user()->id]) }}">アカウント情報</a>
+    </div>
+    @endif
     <div class="logout"><a href="{{ route('logout') }}">ログアウト</a></div>
 
     <script>
@@ -55,10 +61,10 @@
 
             if ($('header').hasClass('menu-active')) {
                 $('header').removeClass('menu-active');
-                $('.nav, .logout').hide();
+                $('.nav, .logout, .to_userInfo').hide();
             } else {
                 $('header').addClass('menu-active');
-                $('.nav, .logout').show();
+                $('.nav, .logout, .to_userInfo').show();
             }
         });
 
@@ -66,12 +72,12 @@
         $(document).on('click', function() {
             if ($('header').hasClass('menu-active')) {
                 $('header').removeClass('menu-active');
-                $('.nav, .logout').hide();
+                $('.nav, .logout, .to_userInfo').hide();
             }
         });
 
         // メニュー自体がクリックされたとき、メニューを閉じないようにする
-        $('.nav, .logout').on('click', function(event) {
+        $('.nav, .logout, .to_userInfo').on('click', function(event) {
             event.stopPropagation();
         });
     })

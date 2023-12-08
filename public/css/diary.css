@@ -141,7 +141,7 @@ body {
     margin-bottom: 10px;
 }
 .diary_body,  .diary_body p{
-	font-weight: bold;
+    font-weight: bold;
     font-size: 1.2rem;
     margin: 0 20px;
 }
@@ -189,9 +189,9 @@ body {
     margin-left: 11%;
 }
 #delete_comment_form {
-	margin: 0 auto;
-	border-radius: 5px;
-	text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    text-align: center;
 }
 
 /* ------------------------------------------------------------ diaryMake ---------------------------------------------------------------------- */
@@ -211,7 +211,9 @@ body {
 label {
     display: block;
     text-align: left;
-    margin: 10px 0;
+    width: 80%;
+    margin: 10px auto;
+    /* margin: 10px 0; */
     font-weight: bold;
 }
 #form label {
@@ -240,9 +242,9 @@ label {
     display: inline-block;
 }
 label[for="area"], label[for="date"] {
-    width: 48%;
-    margin: 10px 1%;
-    display: inline-block;
+    /* width: 48%; */
+    /* margin: 10px 1%;
+    display: inline-block; */
     text-align: left;
 }
 
@@ -255,24 +257,24 @@ textarea {
 
 /* ボタン */
 #btn {
-	cursor: pointer;
-	background-color: #2ca6e0;
-	border: 1px solid #8DD3FA;
-	color: #fff;
-	font-size: larger;
-	width: 20%;
-	height: 30px;
+    cursor: pointer;
+    background-color: #2ca6e0;
+    border: 1px solid #8DD3FA;
+    color: #fff;
+    font-size: larger;
+    width: 20%;
+    height: 30px;
     margin: 20px auto 10px auto;
     display: block;
 }
 #btn_back {
-	cursor: pointer;
-	background-color: #DC143C;
-	border: 1px solid #c30;
-	color: #fff;
-	font-size: larger;
-	width: 20%;
-	height: 30px;
+    cursor: pointer;
+    background-color: #DC143C;
+    border: 1px solid #c30;
+    color: #fff;
+    font-size: larger;
+    width: 20%;
+    height: 30px;
     margin: 10px auto 20px auto;
     display: block;
 }

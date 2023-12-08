@@ -1,3 +1,10 @@
+<?php
+if(empty($userPHP)){
+    header('Location:'.'/',true,301);
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>

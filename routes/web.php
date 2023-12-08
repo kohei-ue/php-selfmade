@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ExtraController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/index', [TravelController::class, 'index'])->name('travels.index');
@@ -53,3 +54,5 @@ Route::delete('/comment/{id}', [CommentController::class, 'deleteComment'])->nam
 
 Route::get('/favorite/{plan_id}',[LikeController::class,'index']);
 Route::post('/favorite/{plan_id}',[LikeController::class,'like']);
+
+Route::get('/information/user/{user_id}',[UserController::class,'userinfo'])->name('users.userInfo');

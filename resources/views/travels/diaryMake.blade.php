@@ -1,12 +1,19 @@
+<?php
+if(empty($userPHP)){
+    header('Location:'.'/',true,301);
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/css/diary.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>Plan Make</title>
+    <title>Diary Make</title>
 </head>
-<body class="plan_body">
+<body class="Diary_body">
     @include('layouts.header')
     <main class="plan_main">
         <div class="title">旅日記作成</div>

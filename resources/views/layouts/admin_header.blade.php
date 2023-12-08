@@ -9,8 +9,10 @@
 
 <header class="header">
     <div class="logo">
-            <img src="/image/Tabi Notes.jpg">
+        <a>
+            <img src="/image/tabinotes.gif">
             <div class="header_text">Tabi Notes</div>
+        </a>
     </div>
 
     <div class="logout"><a href="{{ route('logout') }}">ログアウト</a></div>

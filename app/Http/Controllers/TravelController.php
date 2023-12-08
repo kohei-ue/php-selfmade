@@ -12,6 +12,7 @@ use App\Models\Plan;
 use App\Models\Diary;
 use App\Models\Login;
 use App\Models\Like;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,11 +23,19 @@ class Controller extends BaseController
 class TravelController extends Controller
 {
     public function index() {
+        $userPHP =Auth::user();
+        if(empty($userPHP)){
+            return redirect('/');
+        }
         return view('travels.index');
     }
 
 
     public function planIndex() {
+        $userPHP =Auth::user();
+        if(empty($userPHP)){
+            return redirect('/');
+        }
         return view('travels.planIndex');
     }
     public function showPlans($name)
@@ -87,6 +96,11 @@ class TravelController extends Controller
         $plans = $query->get();
 
         $user = Auth::user();
+        $plan = $query->first();
+        $visitorRecode = DB::table('likes')->select("user_id")->where('plan_id',$plan->id)->groupBy('user_id')->get();
+        $visitorCount = $visitorRecode->count();
+        $userPHP = $user;
+        logs()->alert($userPHP);
         // $like=Like::where('plan_id', $plans->id)->where('user_id', auth()->user()->id)->first();
 
         return view('travels.plan_page', [
@@ -94,13 +108,15 @@ class TravelController extends Controller
             'plans' => $plans,
             'user' => $user,
             // 'likes' => $like
-        ]);
+        ])->with(['userPHP'=>$userPHP,'visitorCount'=>$visitorCount]);
     }
 
 
     public function planMake() {
         $data = session()->get('plan_data', []);
-        return view('travels.planMake', compact('data'));
+        $user = Auth::user();
+        $userPHP = $user;
+        return view('travels.planMake', compact('data'))->with('userPHP', $userPHP);
     }
     public function planMake_submit(PlanMakeRequest $request) {
         $data = $request->all();
@@ -115,7 +131,9 @@ class TravelController extends Controller
     }
     public function planConfirm() {
         $data = session('plan_data');
-        return view('travels.planConfirm', ['data' => $data]);
+        $user = Auth::user();
+        $userPHP = $user;
+        return view('travels.planConfirm', ['data' => $data])->with('userPHP', $userPHP);
     }
     public function planConfirm_submit(Request $request) {
         // セッションからデータを取得
@@ -167,15 +185,21 @@ class TravelController extends Controller
 
     public function diaryIndex() {
         $diaries = Diary::get();
-        return view('travels.diaryIndex', ['diaries' => $diaries]);
+        $user = Auth::user();
+        $userPHP = $user;
+        return view('travels.diaryIndex', ['diaries' => $diaries])->with('userPHP', $userPHP);
     }
     public function diaryDetail($id) {
         $diary = Diary::find($id);
-        return view('travels.diaryDetail', ['diary' => $diary]);
+        $user = Auth::user();
+        $userPHP = $user;
+        return view('travels.diaryDetail', ['diary' => $diary])->with('userPHP', $userPHP);
     }
     public function diaryMake() {
         $data = session()->get('diary_data', []);
-        return view('travels.diaryMake', compact('data'));
+        $user = Auth::user();
+        $userPHP = $user;
+        return view('travels.diaryMake', compact('data'))->with('userPHP', $userPHP);
     }
     public function diaryMake_submit(DiaryRequest $request) {
         $data = $request->all();
@@ -195,6 +219,8 @@ class TravelController extends Controller
     }
     public function diaryConfirm() {
         $data = session('diary_data');
+        $user = Auth::user();
+        $userPHP = $user;
         return view('travels.diaryConfirm', ['data' => $data]);
     }
     public function diaryConfirm_submit(Request $request) {
@@ -252,11 +278,15 @@ class TravelController extends Controller
 
 
     public function adminIndex() {
-        return view('admins.adminIndex');
+        $user = Auth::user();
+        $userPHP = $user;
+        return view('admins.adminIndex')->with('userPHP', $userPHP);
     }
     public function adminUserlist() {
         $users = Login::all();
-        return view('admins.adminUserlist', compact('users'));
+        $user = Auth::user();
+        $userPHP = $user;
+        return view('admins.adminUserlist', compact('users'))->with('userPHP', $userPHP);
     }
 
     public function user_delete($id) {
