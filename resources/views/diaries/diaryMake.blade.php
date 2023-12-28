@@ -1,24 +1,17 @@
-<?php
-if(empty($userPHP)){
-    header('Location:'.'/',true,301);
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/css/diary.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>Diary Make</title>
+    <title>日記作成画面</title>
 </head>
 <body class="Diary_body">
     @include('layouts.header')
     <main class="plan_main">
         <div class="title">旅日記作成</div>
 
-        <form action="{{ route('travels.diaryMake_submit') }}" method="post" id="diaryMake_form" enctype="multipart/form-data" novalidate>
+        <form action="{{ route('diaries.diaryMake_submit') }}" method="post" id="diaryMake_form" enctype="multipart/form-data" novalidate>
         @csrf
         <label for="date">日記題名</label>
         @if($errors->has('title'))
@@ -30,8 +23,8 @@ if(empty($userPHP)){
         @if($errors->has('area'))
             <div class="error_text">{{ $errors->first('area') }}</div>
         @endif
-        <input type="text" id="area2" name="area" value="{{ old('area', $data['area'] ?? '') }}">
-            
+        <input type="text" id="area" name="area" value="{{ old('area', $data['area'] ?? '') }}">
+
         <label for="date">日程</label>
         @if($errors->has('date'))
             <div class="error_text">{{ $errors->first('date') }}</div>
@@ -67,9 +60,9 @@ if(empty($userPHP)){
             diaryFormsHtml += `
                 <div>
                     <label>${i}日目：</label>
-                    <input type="text" name="summary_day${i}">
+                    <input type="text" name="summary_day${i}" style="font-size: 14px">
                     <label>体験したことや感想：</label>
-                    <textarea name="diary_day${i}" cols="30" rows="10"></textarea>
+                    <textarea name="diary_day${i}" cols="30" rows="10" style="font-size: 18px"></textarea>
                 </div>
             `;
         }

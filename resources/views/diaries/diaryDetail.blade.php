@@ -1,16 +1,9 @@
-<?php
-if(empty($userPHP)){
-    header('Location:'.'/',true,301);
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/css/diary.css">
-    <title>diary</title>
+    <title>旅日記詳細画面</title>
     <script src="https://kit.fontawesome.com/9292378248.js" crossorigin="anonymous"></script>
 </head>
 <body>

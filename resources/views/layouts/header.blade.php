@@ -26,8 +26,8 @@
         <ul class="nav-box">
             <li><a href="{{ route('travels.planIndex') }}">プラン一覧</a></li>
             <li><a href="{{ route('travels.planMake') }}">プラン作成</a></li>
-            <li><a href="{{ route('travels.diaryIndex') }}">旅日記</a></li>
-            <li><a href="{{ route('extras.bulletinBoard') }}">掲示板</a></li>
+            <li><a href="{{ route('diaries.diaryIndex') }}">旅日記</a></li>
+            <li><a href="{{ route('extras.board') }}">掲示板</a></li>
         </ul>
     </nav>
     @if(Auth::check())

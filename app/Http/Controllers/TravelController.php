@@ -7,11 +7,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\Http\Requests\PlanMakeRequest;
-use App\Http\Requests\DiaryRequest;
 use App\Models\Plan;
-use App\Models\Diary;
 use App\Models\Login;
-use App\Models\Like;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -23,11 +20,26 @@ class Controller extends BaseController
 class TravelController extends Controller
 {
     public function index() {
-        $userPHP =Auth::user();
-        if(empty($userPHP)){
+        $user =Auth::user();
+        if(empty($user)){
             return redirect('/');
         }
-        return view('travels.index');
+
+        $latestPlans = Plan::orderBy('id','desc')->take(5)->get();
+        $popularPlans = DB::table('plans')
+                            ->leftJoin('likes', 'plans.id', '=', 'likes.plan_id')
+                            ->leftJoin('users', 'plans.user_id','=', 'users.id')
+                            ->select('plans.*', 'users.name as user_name', DB::raw('COUNT(likes.id) as likes_count'))
+                            ->where('likes.favorite', 1)
+                            ->groupBy('plans.id', 'user_name')
+                            ->orderBy('likes_count', 'desc')
+                            ->take(5)->get();
+
+        return view('travels.index', [
+            'user' => $user,
+            'latestPlans' => $latestPlans,
+            'popularPlans' => $popularPlans
+        ]);
     }
 
 
@@ -44,6 +56,16 @@ class TravelController extends Controller
 
         $prefecture = urldecode($name);
         $query = Plan::where('area', $prefecture);
+
+        $prefectures=["北海道","青森県","岩手県","秋田県","宮城県","山形県","福島県","栃木県","群馬県","茨城県","新潟県","埼玉県","千葉県","東京都","神奈川県","長野県","山梨県","富山県","岐阜県","石川県","静岡県","愛知県","三重県","福井県","滋賀県","京都府","奈良県","大阪府","和歌山県","兵庫県","鳥取県","岡山県","島根県","広島県","山口県","愛媛県","高知県","香川県","徳島県","福岡県","大分県","佐賀県","長崎県","熊本県","宮崎県","鹿児島県","沖縄県"];
+            $selectOptions = [];
+            for($i=0;$i<count($prefectures);$i++){
+                if($prefectures[$i]==$prefecture){
+                    array_push($selectOptions,"<option value='".$prefectures[$i]."' selected>".$prefectures[$i]."</option>");
+                }else{
+                    array_push($selectOptions,"<option value='".$prefectures[$i]."'>".$prefectures[$i]."</option>");
+                }
+            }
 
         // ソートの処理
         // if (request()->has('sort_by')) {
@@ -108,7 +130,7 @@ class TravelController extends Controller
             'plans' => $plans,
             'user' => $user,
             // 'likes' => $like
-        ])->with(['userPHP'=>$userPHP,'visitorCount'=>$visitorCount]);
+        ])->with(['userPHP'=>$userPHP,'visitorCount'=>$visitorCount, 'selectOptions'=>$selectOptions]);
     }
 
 
@@ -170,7 +192,12 @@ class TravelController extends Controller
             $plan->save();
 
             // セッションからデータを削除
-            session()->forget('plan_data');
+            // session()->forget('plan_data');
+
+            $planId = $plan->id;
+            $planUrl = url('/plans/'. $planId);
+
+            session(['plan_url'=> $planUrl]);
 
             return redirect()->route('travels.planComplete');
         }
@@ -179,101 +206,10 @@ class TravelController extends Controller
     }
     public function planComplete() {
         $data = session()->get('plan_data', []);
-        return view('travels.planComplete', compact('data'));
-    }
-
-
-    public function diaryIndex() {
-        $diaries = Diary::get();
-        $user = Auth::user();
-        $userPHP = $user;
-        return view('travels.diaryIndex', ['diaries' => $diaries])->with('userPHP', $userPHP);
-    }
-    public function diaryDetail($id) {
-        $diary = Diary::find($id);
-        $user = Auth::user();
-        $userPHP = $user;
-        return view('travels.diaryDetail', ['diary' => $diary])->with('userPHP', $userPHP);
-    }
-    public function diaryMake() {
-        $data = session()->get('diary_data', []);
-        $user = Auth::user();
-        $userPHP = $user;
-        return view('travels.diaryMake', compact('data'))->with('userPHP', $userPHP);
-    }
-    public function diaryMake_submit(DiaryRequest $request) {
-        $data = $request->all();
-        if($request->hasFile('image1')) {
-            $path1 = $request->file('image1')->store('temp', 'public');
-            $data['image_path1'] = $path1;
-        }
-        if($request->hasFile('image2')) {
-            $path2 = $request->file('image2')->store('temp', 'public');
-            $data['image_path2'] = $path2;
-        }
-        // アップロードされたファイルオブジェクトを削除
-        unset($data['image1'], $data['image2']);
-    
-        session(['diary_data' => $data]);
-        return redirect()->route('travels.diaryConfirm');
-    }
-    public function diaryConfirm() {
-        $data = session('diary_data');
-        $user = Auth::user();
-        $userPHP = $user;
-        return view('travels.diaryConfirm', ['data' => $data]);
-    }
-    public function diaryConfirm_submit(Request $request) {
-        // セッションからデータを取得
-        $data = $request->session()->get('diary_data');
-
-        // セッションのデータが存在する場合のみ処理を実行
-        if($data) {
-            // データベースに登録
-            $diary = new Diary();
-            $diary->user_id = auth()->id();
-            $diary->title = $data['title'];
-            $diary->area = $data['area'];
-            $diary->start_date = $data['start_date'];
-            $diary->end_date = $data['end_date'];
-
-            // 日記の内容をそれぞれのカラムに保存
-            $i = 1;
-            $summary_content = "";
-            $diary_content = "";
-            while (isset($data['summary_day' . $i]) && isset($data['diary_day' . $i])) {
-                $summary_content .= $data['summary_day' . $i] . " ";
-                $diary_content .= $data['diary_day' . $i] . " ";
-                $i++;
-            }
-            $diary->summary_day = trim($summary_content);
-            $diary->diary_day = trim($diary_content);
-
-            // 画像のアップロード処理
-            if (isset($data['image_path1'])) {
-                $newPath1 = 'images/' . basename($data['image_path1']);
-                Storage::disk('public')->move($data['image_path1'], $newPath1);
-                $diary->image1 = $newPath1;
-            }
-            if (isset($data['image_path2'])) {
-                $newPath2 = 'images/' . basename($data['image_path2']);
-                Storage::disk('public')->move($data['image_path2'], $newPath2);
-                $diary->image2 = $newPath2;
-            }
-
-            $diary->save();
-
-            // セッションからデータを削除
-            session()->forget('diary_data');
-
-            return redirect()->route('travels.diaryComplete');
-        }
-        // セッションのデータが存在しない場合のエラーハンドリング
-        abort(404);
-    }
-    public function diaryComplete() {
-        $data = session()->get('diary_data', []);
-        return view('travels.diaryComplete', compact('data'));
+        // $lastPlanId = session('last_plan_id');
+        // $lastPlan = Plan::find($lastPlanId);
+        return view('travels.planComplete', ['data' => $data]);
+        // compact('data')
     }
 
 

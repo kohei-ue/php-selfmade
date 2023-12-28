@@ -54,6 +54,10 @@
     top: 35%;
     right: 5%;
 }
+.to_userInfo a, .logout a {
+    color: #000;
+    text-decoration-line: underline;
+}
 
 .hamburger-menu {
     display: none;

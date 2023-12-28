@@ -10,6 +10,8 @@ h1, h2, ul, li {
     box-sizing: border-box;
 }
 body {
+    margin: 0;
+    padding: 0;
     margin-top: 100px;
 }
 
@@ -25,8 +27,8 @@ body {
 }
 .info_detail {
     width: 78%;
-    font-size: 1.1rem;
-    margin: 0 0 20px 11%;
+    font-size: 1.2rem;
+    margin: 0 0 20px 13%;
     border-bottom: 3px solid pink;
 }
 #done_good {
@@ -53,11 +55,29 @@ body {
     margin-left: 45vw;
 }
 
+.edit_plan_container {
+    background-color: #fff;
+    margin: 20px auto;
+    /* padding: 20px; */
+    /* border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); */
+    max-width: 1000px;
+    height: 72.5vh;
+}
+.edit_plan_content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 .plan_content input {
     font-size: 100%;
 }
 .plan_title input {
-    width: 70vw;
+    font-size: 25px;
+    font-weight: bold;
+    flex: 1 1 100%;
+    position: relative;
+    width: 70%;
 }
 .plan_spot input {
     width: 40vw;
@@ -66,8 +86,18 @@ body {
     font-size: 100%;
     width: 70vw;
 }
-.plan_content button {
-    margin-left: 45vw;
+.buttons {
+    margin-left: 55vw;
+}
+.save-button {
+    background-color: steelblue;
+    font-size: large;
+    height: 36px;
+}
+.cancel-button {
+    background-color: red;
+    font-size: large;
+    height: 36px;
 }
 
 
@@ -134,4 +164,72 @@ body {
     height: 30px;
     margin-left: 72%;
     display: block;
+}
+
+/* ページネーション */
+.paginate{ text-align: center; }
+.pagination{
+    font-family: 'Ubuntu', sans-serif;
+    display: inline-flex;
+    position: relative;
+}
+.pagination li a{text-decoration: none;}
+.pagination li a.page-link{
+    line-height: 62px;
+    height: 62px;
+    width: 70px;
+    padding: 0;
+    margin: 0 10px;
+    border: none;
+    border-radius: 50% !important;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    background-color: #9e506e;
+    font-size: 28px;
+    font-weight: 600;
+    z-index: 1;
+    transition: all 0.3s ease 0s;
+}
+.pagination li a.page-link:hover,
+.pagination li a.page-link:focus,
+.pagination li.active a.page-link:hover,
+.pagination li.active a.page-link{
+    color: #222;
+    background: transparent;
+    box-shadow: 0 0 10px #a26769;
+}
+.pagination li a.page-link:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    border: 5px solid #a26769;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-radius: 50%;
+    opacity: 0;
+    transform: rotate(155deg);
+    transition: all 0.3s ease 0s;
+}
+.pagination li a.page-link:hover:before,
+.pagination li a.page-link:focus:before,
+.pagination li.active a.page-link:before{
+    opacity: 1;
+    transform: rotate(-15deg);
+}
+@media only screen and (max-width: 480px){
+    .pagination{
+        font-size: 0;
+        border: none;
+        display: inline-block;
+    }
+    .pagination li{
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 0 10px;
+    }
 }

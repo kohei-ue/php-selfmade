@@ -7,7 +7,7 @@
 </head>
 <body>
     <h4 class="register_title">管理者新規登録</h4>
-    <form action="{{ route('adminns.userRegisterAd') }}" method="POST" class="login_form" novalidate>
+    <form action="{{ route('admins.userRegisterAd') }}" method="POST" class="login_form" novalidate>
         @csrf
         <h3>ユーザー名:</h3>
         @if($errors->has('name'))

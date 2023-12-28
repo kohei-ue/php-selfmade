@@ -1,20 +1,18 @@
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/css/plan.css">
-    <title>Plan Index</title>
+    <title>プラン一覧画面</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9292378248.js" crossorigin="anonymous"></script>
 </head>
 <body>
     @include('layouts.header')
-    <main>
+<main id="planIndex_main">
+    <div class="top-text">プラン一覧</div>
     <?xml version="1.0" encoding="UTF-8"?>
     <div class="svg-container">
-        <div class="top-text">プラン一覧</div>
         <div class="intro-text">いざ全国の旅へ</div>
         <div class="intro-text_content">当サイトが提供するプランとユーザーの方が<br>作成したプランをご覧いただけます。</div>
         <div class="planIndex_box">
@@ -282,83 +280,14 @@
             <line id="line_kyuushu" class="cls-15" x1="46.43" y1="563.53" x2="113.34" y2="563.53"/>
         </g>
         </svg>
+        <div class="currentLocation">
+            <h3>下記のボタンを押すことで現在地に該当する都道府県がハイライトされます。</h2>
+            <button id="getCurrentLocation">現在地を取得</button>
+        </div>
     </div>
 
-    </main>
-    <script>
-        // 各都道府県のクリックイベントを追加
-        document.querySelectorAll('path').forEach(function(pref) {
-            pref.addEventListener('click', function(event) {
-                // 英語表記と漢字表記のマッピング
-                const prefectureMapping = {
-                    "hokkaido": "北海道",
-                    "aomori": "青森県",
-                    "iwate": "岩手県",
-                    "akita": "秋田県",
-                    "miyagi": "宮城県",
-                    "yamagata": "山形県",
-                    "fukushima": "福島県",
-                    "tochigi": "栃木県",
-                    "gunma": "群馬県",
-                    "ibaraki": "茨城県",
-                    "niigata": "新潟県",
-                    "niigata_sado": "新潟県",
-                    "saitama": "埼玉県",
-                    "chiba": "千葉県",
-                    "tokyo": "東京都",
-                    "kanagawa": "神奈川県",
-                    "nagano": "長野県",
-                    "yamanashi": "山梨県",
-                    "toyama": "富山県",
-                    "gifu": "岐阜県",
-                    "ishikawa": "石川県",
-                    "shizuoka": "静岡県",
-                    "aichi": "愛知県",
-                    "mie": "三重県",
-                    "fukui": "福井県",
-                    "shiga": "滋賀県",
-                    "kyoto": "京都府",
-                    "nara": "奈良県",
-                    "ohsaka": "大阪府",
-                    "wakayama": "和歌山県",
-                    "shiga_biwako": "滋賀県",
-                    "hyougo": "兵庫県",
-                    "hyougo_awaji": "兵庫県",
-                    "tottori": "鳥取県",
-                    "okayama": "岡山県",
-                    "shimane": "島根県",
-                    "hiroshima": "広島県",
-                    "yamaguchi": "山口県",
-                    "ehime": "愛媛県",
-                    "kohchi": "高知県",
-                    "kagawa": "香川県",
-                    "tokushima": "徳島県",
-                    "fukuoka": "福岡県",
-                    "ohita": "大分県",
-                    "saga": "佐賀県",
-                    "nagasaki": "長崎県",
-                    "kumamoto": "熊本県",
-                    "nagasaki_3": "長崎県",
-                    "nagasaki_2": "長崎県",
-                    "miyazaki": "宮崎県",
-                    "kagoshima": "鹿児島県",
-                    "okinawa": "沖縄県",
-                };
-
-                // クリックされたpathタグのidを取得
-                let englishName = event.target.id;
-
-                // マッピングオブジェクトを使用して対応する漢字表記を取得
-                let prefectureName = prefectureMapping[englishName];
-
-                // 漢字表記をURLエンコード
-                let encodedPrefecture = encodeURIComponent(prefectureName);
-
-                // エンコードされたURLを元に、showPlansメソッドのルートにリダイレクト
-                window.location.href = '/prefecture/' + encodedPrefecture;
-            });
-        });
-    </script>
+</main>
+    <script src="/js/planIndex.js"></script>
 </body>
     @include('layouts.footer')
 </html>

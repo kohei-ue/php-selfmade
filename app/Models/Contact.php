@@ -6,25 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Plan extends Model
+class Contact extends Model
 {
     use HasFactory;
-    public $timestamps = true;
     public function user() {
         return $this->belongsTo(User::class);
     }
-    protected $table = "plans";
+    protected $table = "contacts";
     protected $primaryKey = 'id';
     protected $fillable = [
-        'title',
-        'area',
-        'date',
-        'money',
-        'traffic',
-        'spot',
+        'name',
+        'tel',
+        'email',
         'body',
-        'image',
     ];
 }

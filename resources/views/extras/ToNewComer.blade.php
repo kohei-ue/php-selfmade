@@ -3,19 +3,25 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/css/extra.css">
-    <title>To New Comer</title>
+    <title>はじめての方へ</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/9292378248.js" crossorigin="anonymous"></script>
 </head>
 <body>
     @include('layouts.header')
     <main>
-        <div class="popular-destinations">
+        <ol class="breadcrumb" id="breadComer">
+            <li><a href="{{ route('travels.index') }}">ホーム</a></li>
+            <li><a href="{{ route('travels.planIndex') }}">プラン一覧</a></li>
+            <li><a href="">はじめての方へ</a></li>
+        </ol>
         <div class="AllComer">こちらのページでは人気のある目的地や都道府県をご紹介をしたり旅行の計画を立てる際に役立つヒントやアドバイスを提供しています。プラン作りの参考にどうぞ。</div>
-        <h1>人気の目的地</h1>
+        <div class="popular-destinations">
+            <h1>人気の目的地</h1>
             <section id="tokyo">
                 <div class="imgs">
                     <img src="/image/tokyo.jpg" alt="浅草">
+                    <div id="tokyoMap" style="height: 300px; width: 95%; margin: 10px 0;"></div> <!-- 地図を表示するためのコンテナ -->
                     <img src="/image/tokyo2.png" alt="スカイツリー">
                 </div>
 
@@ -32,7 +38,7 @@
                         伝統的な文化と最先端のトレンドが融合する東京は、訪れる人々に多様な体験を提供します。浅草の雷門や皇居、明治神宮などの歴史的な観光地から、青山や原宿のファッションストリート、秋葉原の電気街まで、その顔は多岐にわたります。
                     </p>
 
-                    <h3>訪れるべき場所</h3>
+                    <h3>おススメの場所</h3>
                     <ul>
                         <li>浅草：日本の伝統を感じることができる地区。</li>
                         <li>東京スカイツリー：地上634メートルの高さを誇るタワー。</li>
@@ -40,7 +46,7 @@
                         <li>原宿・表参道：最新のファッションやカフェ文化を体験できるスポット。</li>
                     </ul>
 
-                    <h3>食べるべき料理</h3>
+                    <h3>おススメの料理</h3>
                     <ul>
                         <li>寿司：築地や銀座の寿司は世界的にも有名。新鮮な魚介類を使用したにぎり寿司は、一つ一つが職人の技と味の妙を感じさせます。</li>
                         <li>ラーメン：数多くのラーメン店が存在し、様々な地域のラーメンが楽しめます。醤油、味噌、塩、豚骨など、さまざまなスタイルがあり、独自のアレンジを加えた店も多いです。</li>
@@ -60,7 +66,8 @@
             <section id="sapporo">
                 <div class="imgs">
                     <img src="/image/sapporo.webp" alt="大通公園">
-                    <img src="/image/sapporo2.jpg" alt="これなんて言うんだっけ">
+                    <div id="SapporoMap" style="height: 300px; width: 95%; margin: 10px 0;"></div>
+                    <img src="/image/sapporo2.jpg" alt="札幌時計台">
                 </div>
 
                 <div class="info">
@@ -76,15 +83,16 @@
                     札幌は自然と都市生活が調和した独特の雰囲気を持っています。美しい公園、モダンな建築、活気あるショッピングエリアと飲食店が特徴です。充実した都市生活と四季折々の自然景観が楽しめ、特に冬の雪祭りは国際的に有名です。
                     </p>
 
-                    <h3>訪れるべき場所</h3>
+                    <h3>おススメの場所</h3>
                     <ul>
                         <li>大通公園：四季折々の自然が楽しめる公園。冬の雪祭りは特に有名。</li>
                         <li>札幌時計台：札幌のシンボルとして知られる歴史的建築物。</li>
                         <li>すすきの：北海道最大の繁華街で、多くのレストラン、バー、エンターテイメント施設があります。</li>
                         <li>モエレ沼公園：世界的な彫刻家イサム・ノグチがデザインした公園。モダンな造形と自然が調和した空間で、四季折々の自然美を楽しむことができます。</li>
+                        <li>サッポロビール園：博物館と併設されているサッポロビールの施設。ビールの歴史を学べるのに加えてサッポロビールの飲み比べやジンギスカンも味わえます。</li>
                     </ul>
 
-                    <h3>食べるべき料理</h3>
+                    <h3>おススメの料理</h3>
                     <ul>
                         <li>ジンギスカン：北海道名物の羊肉を使った料理。サッポロビール園などで提供されるジンギスカンは、ジューシーで柔らかな肉質が特徴。新鮮な羊肉を炭火で焼き、特製のタレで味わいます。</li>
                         <li>海鮮丼：新鮮な海の幸を堪能できる丼ぶり。</li>
@@ -103,7 +111,8 @@
             <section id="sendai">
                 <div class="imgs">
                     <img src="/image/sendai.jpg" alt="伊達政宗像">
-                    <img src="/image/sendai2.jpg" alt="">
+                    <div id="SendaiMap" style="height: 300px; width: 95%; margin: 10px 0;"></div>
+                    <img src="/image/sendai2.jpg" alt="定禅寺通り">
                 </div>
 
                 <div class="info">
@@ -119,7 +128,7 @@
                     仙台は「杜の都」とも呼ばれ、豊かな自然と歴史的な建築が調和しています。多くの文化施設、美術館、伝統的な祭りが市民生活に色を添えています。
                     </p>
 
-                    <h3>訪れるべき場所</h3>
+                    <h3>おススメの場所</h3>
                     <ul>
                         <li>青葉城址：伊達政宗が築いた城の跡地。</li>
                         <li>定禅寺通り：仙台の中心街に位置する美しい並木道。</li>
@@ -127,7 +136,7 @@
                         <li>仙台うみの杜水族館：仙台にある大規模な水族館。地元の海洋生物をはじめ、世界各地の海の生き物を観察することができます。</li>
                     </ul>
 
-                    <h3>食べるべき料理</h3>
+                    <h3>おススメの料理</h3>
                     <ul>
                         <li>牛タン：炭火で焼いた香ばしい牛のタンは仙台の代表的なグルメ。肉の厚さ、柔らかさ、そして独特の味付けが特徴。仙台市内の多くの専門店で、さまざまな牛タン料理を楽しむことができます。</li>
                         <li>せんだい味噌：地元特有の味噌を使った料理。</li>
@@ -146,6 +155,7 @@
             <section id="kyoto">
                 <div class="imgs">
                     <img src="/image/kyoto.jpg" alt="八坂通り">
+                    <div id="KyotoMap" style="height: 300px; width: 95%; margin: 10px 0;"></div>
                     <img src="/image/kyoto2.webp" alt="清水寺">
                 </div>
 
@@ -162,7 +172,7 @@
                     伝統的な芸能や工芸品、茶道や華道など、日本の文化が色濃く反映されています。街中には古い町屋が残り、訪れる人々に古き良き日本の風情を感じさせます。
                     </p>
 
-                    <h3>訪れるべき場所</h3>
+                    <h3>おススメの場所</h3>
                     <ul>
                         <li>金閣寺：金箔で覆われた壮麗な寺院。</li>
                         <li>清水寺：大舞台からの眺望が有名な古刹。</li>
@@ -170,7 +180,7 @@
                         <li>伏見稲荷大社：千本鳥居で有名な神社。</li>
                     </ul>
 
-                    <h3>食べるべき料理</h3>
+                    <h3>おススメの料理</h3>
                     <ul>
                         <li>京料理：精巧な盛り付けと繊細な味わいが特徴の伝統的な日本料理。</li>
                         <li>抹茶スイーツ：京都産の抹茶を使用した様々なスイーツ。</li>
@@ -189,6 +199,7 @@
             <section id="okinawa">
                 <div class="imgs">
                     <img src="/image/okinawa.webp" alt="首里城">
+                    <div id="OkinawaMap" style="height: 300px; width: 95%; margin: 10px 0;"></div>
                     <img src="/image/okinawa2.jpg" alt="美ら海水族館">
                 </div>
 
@@ -205,7 +216,7 @@
                     独自の言語や伝統芸能、工芸品があり、リゾート地としても人気。美しい海と自然が魅力です。
                     </p>
 
-                    <h3>訪れるべき場所</h3>
+                    <h3>おススメの場所</h3>
                     <ul>
                         <li>首里城：琉球王国時代の王城。色鮮やかな建築が特徴。</li>
                         <li>美ら海水族館：巨大な水槽が有名な水族館。</li>
@@ -213,7 +224,7 @@
                         <li>波上宮：海に面した美しい神社。</li>
                     </ul>
 
-                    <h3>食べるべき料理</h3>
+                    <h3>おススメの料理</h3>
                     <ul>
                         <li>ゴーヤチャンプルー：苦味のあるゴーヤを使った沖縄の家庭料理。</li>
                         <li>沖縄そば：独特のコシのある麺とあっさりしたスープが特徴。</li>
@@ -230,17 +241,16 @@
             </section>
 
             <h1>プランの作り方</h1>
+            <h2 id="lets-planMake">☆彡<span>プランを作成する際に重要なポイントや気を付ける点を解説していきます。</span></h2>
             <section id="planMake">
-                <div class="imgs">
+                <div class="imgs_make">
                     <img src="/image/planMake.jpg" alt="プランメイク1">
                     <img src="/image/planMake2.jpg" alt="プランメイク2">
-                    <img src="/image/planMake3.jpg" alt="プランメイク3">
-                    <img src="/image/planMake4.jpg" alt="プランメイク4">
+                    <img src="/image/planMake3.png" alt="プランメイク3">
+                    <img src="/image/planMake4.gif" alt="プランメイク4">
                 </div>
 
                 <div class="info">
-                    <h2>☆彡<span>プランを作成する際に重要なポイントや気を付ける点を解説していきます。</span></h2>
-
                     <h3>プラン名</h3>
                     <ul>
                         <li>ポイント: プラン名は魅力的かつ記憶に残るものにしましょう。目的地の特色やプランのユニークな点を反映させると良いです。</li>
@@ -285,7 +295,15 @@
                 </div>
             </section>
         </div>
+        <button class="to_pageTop" id="to_pageTop" aria-label="scrollTop" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="#ffffff" d="m12.9 5.1 10.7 10.7c.5.5.5 1.4 0 1.9l-1.2 1.2c-.5.5-1.3.5-1.9 0L12 10.4l-8.5 8.5c-.5.5-1.3.5-1.9 0L.4 17.7c-.5-.5-.5-1.4 0-1.9L11.1 5.1c.5-.5 1.3-.5 1.8 0z"/>
+            </svg>
+        </button>
     </main>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMrNuv649uGGPyBJbXkHhl5ZdzgOpM-3E&callback=initMaps&libraries=&v=weekly" async></script>
+    <script src="/js/newComer.js"></script>
+    <script src="/js/toPageTop.js"></script>
 </body>
     @include('layouts.footer')
 </html>

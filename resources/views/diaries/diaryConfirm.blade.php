@@ -1,23 +1,16 @@
-<?php
-if(empty($userPHP)){
-    header('Location:'.'/',true,301);
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/css/plan.css">
+    <link rel="stylesheet" type="text/css" href="/css/diary.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>日記投稿</title>
 </head>
 <body class="plan_body">
     @include('layouts.header')
-    <main class="plan_main">
+    <main class="diary_main_conf">
         <div class="title">投稿内容確認</div>
-        <form action="{{ route('travels.diaryConfirm_submit') }}" method="post" id="form" enctype="multipart/form-data" novalidate>
+        <form action="{{ route('diaries.diaryConfirm_submit') }}" method="post" id="form" enctype="multipart/form-data" novalidate>
         @csrf
         <label for="title">日記題名</label>
         <input type="hidden" id="title" name="title" value="{{ $data['title'] }}">
@@ -48,12 +41,12 @@ if(empty($userPHP)){
 
         <label for="image">写真</label>
         <div class="diary-preview">
-            <img id="preview1" src="{{ asset('storage/' . $data['image_path1']) }}" alt="Uploaded Image 1" style="max-width:200px;">
-            <img id="preview2" src="{{ asset('storage/' . $data['image_path2']) }}" alt="Uploaded Image 2" style="max-width:200px;">
+            <img id="preview1" src="{{ asset('storage/' . $data['image_path1']) }}" alt="Uploaded Image 1" style="max-width:350px;">
+            <img id="preview2" src="{{ asset('storage/' . $data['image_path2']) }}" alt="Uploaded Image 2" style="max-width:350px;">
         </div>
 
-        <input id="btn" type=submit name="submit" value="投稿">
-        <input id="btn_back" type=button value="戻る" onclick="history.back(-1)">
+        <input id="btn" type=submit name="submit" value="投 稿">
+        <input id="btn_back" type=button value="戻 る" onclick="history.back(-1)">
         </form>
     </main>
     @include('layouts.footer')

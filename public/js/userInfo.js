@@ -19,39 +19,43 @@ function editPlan(button, planId) {
     planContent.dataset.originalContent = planContent.innerHTML;
 
     const formHtml = `
-        <div class="plan_content">
-            <div class="plan_title">
-                <input type="text" name="title" value="${title}">
+    <div class="edit_plan_container">
+    <div class="edit_plan_content">
+        <div class="plan_title">
+            <input type="text" name="title" value="${title}">
+        </div>
+        <div class="plan_date">
+            <strong>滞在日数</strong><input type="text" name="date" value="${date}">
+        </div>
+        <div class="plan_money">
+            <strong>想定予算</strong><input type="text" name="money" value="${money}">
+        </div>
+        <div class="plan_traffic">
+            <strong>主な移動手段</strong><input type="text" name="traffic" value="${traffic}">
+        </div>
+        <div class="plan_details">
+            <div class="plan_image">
+                <img src="${imageSrc}" alt="プラン画像">
             </div>
-            <div class="plan_date">
-                <strong>滞在日数</strong><input type="text" name="date" value="${date}">
-            </div>
-            <div class="plan_money">
-                <strong>想定予算</strong><input type="text" name="money" value="${money}">
-            </div>
-            <div class="plan_traffic">
-                <strong>主な移動手段</strong><input type="text" name="traffic" value="${traffic}">
-            </div>
-            <div class="plan_details">
-                <div class="plan_image">
-                    <img src="${imageSrc}" alt="プラン画像">
-                </div>
 
-                <div class="plan_spot">
-                    ${spots.map((spot, index) => `
-                        <div>
-                            <strong>${spot.day}</strong>
-                            <input type="text" name="spots[${index}]" value="${spot.locations.join('→')}">
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-            <div class="plan_body">
-                <textarea name="body">${body}</textarea>
+            <div class="plan_spot">
+                ${spots.map((spot, index) => `
+                    <div>
+                        <strong>${spot.day}</strong>
+                        <input type="text" name="spots[${index}]" value="${spot.locations.join('→')}">
+                    </div>
+                `).join('')}
             </div>
         </div>
-        <button class="save-button" onclick="savePlan(this, ${planId})">保存</button>
-        <button class="cancel-button" onclick="cancelEdit(this)">キャンセル</button>
+        <div class="plan_body">
+            <textarea name="body">${body}</textarea>
+        </div>
+        </div>
+        <div class="buttons">
+            <button class="save-button" onclick="savePlan(this, ${planId})">保存</button>
+            <button class="cancel-button" onclick="cancelEdit(this)">キャンセル</button>
+        </div>
+    </div>
     </div>
     `;
     planContent.innerHTML = formHtml;

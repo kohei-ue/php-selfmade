@@ -2,14 +2,15 @@
 /* reset */
 ul, li {
     margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 * {
     box-sizing: border-box;
 }
-
 body {
     margin: 0;
-    padding: 0px;
+    padding: 0;
     background-color: #f4f4f4;
 }
 main {
@@ -20,7 +21,34 @@ main {
     min-height: 80vh; */
     padding-top: 8%;
 }
+.to_pageTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #26a9f2;
+    opacity: 0.8;
+    z-index: 1000;
+}
+.to_pageTop:hover {
+    cursor: pointer;
+    border: 1px solid #26a9f2;
+    background-color: #fff;
+}
+.to_pageTop:hover path {
+    fill: #26a9f2;
+}
+
 /* ------------------------------------------------------------ ToNewComer --------------------------------------------------------------------- */
+#breadComer {
+    margin-left: 5%;
+}
 .popular-destinations {
     width: 90%;
     margin: 20px auto;
@@ -30,13 +58,18 @@ main {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .AllComer {
-    margin: 40px 0 50px 35px;
+    margin: 40px 0 20px 5%;
     font-size: 1.3rem;
 }
+
 .popular-destinations h1 {
     text-align: center;
     margin-bottom: 60px;
+    padding:0 .4em .2em;
+    border-bottom: 3px dashed #2589d0;
+    color: #333333;
 }
+
 section {
     display: flex;
     margin-bottom: 60px;
@@ -45,7 +78,13 @@ section {
     max-width: 500px;
     text-align: center;
     margin-top: 70px;
-    line-height: 10;
+    /* line-height: 10; */
+}
+.imgs_make {
+    max-width: 500px;
+    text-align: center;
+    margin-top: 70px;
+    line-height: 80px;
 }
 section img {
     width: 400px;
@@ -74,32 +113,113 @@ section img {
     text-decoration: none;
     color: #007bff;
 }
+#lets-planMake {
+    margin-left: 10%;
+}
 
-/* ------------------------------------------------------------ bulletinBoard ------------------------------------------------------------------ */
-.bulletin-board-container {
+/* ------------------------------------------------------------ Board ------------------------------------------------------------------ */
+.board-container {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
 }
 
-.bulletin-board-container h2 {
-    text-align: center;
+.breadcrumb {
+    display: flex;
+    gap: 0 20px;
+    list-style: none;
+    padding: 0;
+    font-size: 1em;
+}
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+}
+.breadcrumb li:first-child::before {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 4px;
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M11.7%207.5%204%2013.8v6.8c0%20.4.3.7.7.7h4.7c.4%200%20.7-.3.7-.7v-4c0-.4.3-.7.7-.7h2.7c.4%200%20.7.3.7.7v4c0%20.4.3.7.7.7h4.7c.4%200%20.7-.3.7-.7v-6.8l-7.7-6.3h-.9zm12.1%204.4L20.3%209V3.2c0-.3-.2-.5-.5-.5h-2.3c-.3%200-.5.2-.5.5v2.9L13.3%203c-.7-.6-1.8-.6-2.5%200L.2%2011.8c-.2.2-.3.5-.1.7l1.1%201.3c.2.2.5.2.7.1l9.8-8.1h.6l9.8%208.1c.2.2.5.1.7-.1l1.1-1.3c.2-.2.1-.5-.1-.6z%22%20style%3D%22fill%3A%23333333%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    content: '';
+}
+.breadcrumb li:not(:last-child)::after {
+    display: inline-block;
+    width: .3em;
+    height: .6em;
+    margin-left: 12px;
+    background-color: #333333;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    content: '';
+}
+.breadcrumb a {
+    color: #333333;
+    text-decoration: none;
+}
+
+.board-container h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #333333;
     margin-bottom: 20px;
+}
+.board-container h2::before,
+.board-container h2::after {
+    width: 3px;
+    height: 40px;
+    background-color: #2589d0;
+    content: '';
+}
+.board-container h2::before {
+    transform: rotate(-35deg);
+    margin-right: 40px;
+}
+.board-container h2::after {
+    transform: rotate(35deg);
+    margin-left: 40px;
 }
 
 .post-form textarea {
+    font-size: x-large;
     width: 100%;
     height: 100px;
     margin-bottom: 10px;
 }
 
 .post-form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: .9em 2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1em;
+}
+.post-form button:hover {
+    animation: anima-button 2s linear infinite;
+}
+@keyframes anima-button {
+    7% {
+        transform: translateY(-15px);
+    }
+    15% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(-7px);
+    }
+    25% {
+        transform: translateY(0);
+    }
 }
 
 .posts-container {
@@ -110,7 +230,259 @@ section img {
 
 /* 以下、投稿されたメッセージのスタイル */
 .post {
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     padding: 10px;
-    border-bottom: 1px solid #eee;
+    background-color: #fff;
+    border: 1px solid #000;
+}
+.post i {
+    color: #2589d0;
+    float: right;
+    margin-right: 50px;
+}
+.post i:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.reply-container {
+    margin-left: 25px;
+}
+.reply-form {
+    margin-bottom: 10px;
+}
+.reply-container textarea {
+    resize: none;
+    width: 100%;
+    font-size: x-large;
+}
+.reply-container button {
+    margin-left: 35vw;
+}
+.reply-container button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 35vw;
+    border: none;
+    border-radius: 5px;
+    background-color: #2589d0;
+    color: #fff;
+    font-weight: 600;
+}
+.reply-container button:hover {
+    animation: anima-rebutton 2s linear infinite;
+}
+.reply {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #000;
+}
+@keyframes anima-rebutton {
+    7% {
+        transform: translateY(-15px);
+    }
+    15% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(-7px);
+    }
+    25% {
+        transform: translateY(0);
+    }
+}
+
+/* ---------------------------------------------------------サイト情報・サポート ------------------------------------------------------------------ */
+#Info_body {
+    margin: 20px 10%;
+}
+.info_text, .support_text {
+    text-align: justify;
+    padding: 30px 2%;
+    font-size: 1.3rem;
+    background-color: #fff;
+}
+.info_text li, .support_text li {
+    margin-bottom: 10px;
+}
+
+/* ------------------------------------------------------------ FAQ ------------------------------------------------------------------ */
+#FAQ_body {
+    margin: 20px 10%;
+}
+.qa dt {
+    margin-bottom: 1em;
+    color: #333333;
+    font-weight: 600;
+}
+.qa dt::before,
+.qa dd::before {
+    margin-right: .4em;
+}
+.qa dt::before {
+    content: "Q.";
+}
+.qa dd {
+    margin: 0 0 2.5em;
+    padding: 1em 1.5em;
+    background-color: #ffffff;
+    color: #333333;
+}
+.qa dd::before {
+    content: "A.";
+}
+
+/* ---------------------------------------------------------- お問い合わせ ------------------------------------------------------------------ */
+.contact-content {
+    margin: 0 10%;
+}
+#contact-form, #confirm-form {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 3% 8%;
+}
+#pp span, .contact-form span {
+    color: rgb(255, 0, 0);
+}
+.contact-form input, .confirm-form p {
+    width: 40%;
+    font-size: larger;
+}
+.contact-form textarea {
+    resize: none;
+    font-size: x-large;
+}
+.error_text {
+    color: rgb(255, 0, 0);
+}
+
+.confirm-btn {
+    display: flex;
+    flex-direction: row-reverse;
+}
+#btn {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    margin: 5px auto;
+    padding: .9em 2em;
+    border: 1px solid #2ea8e0;
+    border-radius: 5px;
+    background-color: #2ea8e0;
+    color: #fff;
+    font-size: 1em;
+}
+#btn:hover {
+    border: none;
+    background-color: #fff;
+    color: #2ea8e0;
+    border: 1px solid #2ea8e0;
+    font-weight: 600;
+}
+#btn::after {
+    transform: rotate(45deg);
+    width: 5px;
+    height: 5px;
+    margin-left: 10px;
+    border-top: 2px solid #2ea8e0;
+    border-right: 2px solid #2ea8e0;
+    content: '';
+}
+#btn:hover::after {
+    border-color: #fff;
+}
+
+#btn_back {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    margin: 5px auto;
+    padding: .9em 2em;
+    border: 1px solid #DC143C;
+    border-radius: 5px;
+    background-color: #DC143C;
+    color: #fff;
+    font-size: 1em;
+}
+#btn_back:hover {
+    border: none;
+    background-color: #fff;
+    color: #DC143C;
+    border: 1px solid #DC143C;
+    font-weight: 600;
+}
+#btn_back::after {
+    transform: rotate(45deg);
+    width: 5px;
+    height: 5px;
+    margin-left: 10px;
+    border-top: 2px solid #DC143C;
+    border-right: 2px solid #DC143C;
+    content: '';
+}
+#btn_back:hover::after {
+    border-color: #fff;
+}
+
+.to_topPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 250px;
+    margin:0 auto;
+    padding: .9em 2em;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background-color: #2ea8e0;
+    color: #fff;
+    font-size: 1.2em;
+}
+.to_topPage:hover {
+    animation: anima-button-030 1s;
+}
+@keyframes anima-button-030 {
+    0% {
+        box-shadow: 0 0 0 0 rgb(46 168 224 / 50%);
+    }
+    100% {
+        box-shadow: 0 0 0 1.2em rgb(0 0 0 / 0%);
+    }
+}
+
+
+#policy_title, #agreement_title, #sitemap_title {
+    text-align: center;
+}
+#policy_p, #agreement_p {
+    margin: 0 10%;
+}
+.policy, .agreement {
+    background-color: #fff;
+    border-radius: 1em;
+    margin: 10px 5%;
+    padding: 10px 5%;
+}
+.policy li {
+    list-style-type: disc;
+}
+.agree_section li {
+    list-style-type: decimal;
+}
+#num {
+    margin-left: 1em;
+}
+#agree_abc {
+    margin-left: 1em;
+}
+
+#sitemap_img {
+    width: auto;
 }

@@ -1,36 +1,13 @@
 @charset "UTF-8";
 /* reset */
-body, h1, h2, h3, h4, h5, h6, p, address,
-ul, ol, li, dl, dt, dd, img, form, table, tr, th, td {
-	margin: 0;
-	padding: 0;
-	border: none;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 100%;
-	text-align: left;
-	list-style-type: none;
-	border-collapse: collapse;
+body, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
 }
-
-textarea { font-size: 100%; vertical-align:middle;}
 img { border-style: none; display: block; }
-hr { display: none; }
-em{font-style: normal}
-input{line-height:auto;vertical-align:middle;}
-strong.more{color:#c30}
-a{text-decoration: none;}
-
-body {
-	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
-}
-
 * {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-o-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .top-img {
@@ -71,7 +48,7 @@ body {
 .intro-text {
     width: 90%;
     font-size: 20px;
-    margin: 60px auto 100px auto;
+    margin: 60px auto;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -120,9 +97,76 @@ body {
     font-size: 14px;
 }
 
+/* 最近の投稿と人気の投稿 */
+#plan_indexList {
+    display: flex;
+    width: 90%;
+    margin: 0 auto 50px auto;
+    border-radius: 10px;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)),
+        url("/image/backImage2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.list_container {
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 100%;
+}
+.listText_latest {
+    margin-left: 5%;
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.listText_popular {
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.latestPlans {
+    height: 150px;
+    width: 90%;
+    margin-left: 10%;
+    overflow: scroll;
+    overflow-x: hidden;
+    font-size: larger;
+    background-size: cover;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+.plan_item {
+    border-bottom: 1px solid #000080;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.popularPlans {
+    height: 150px;
+    width: 90%;
+    margin-left: 5%;
+    overflow: scroll;
+    overflow-x: hidden;
+    font-size: larger;
+    background-size: cover;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+.plan_area {
+    font-weight: bold;
+    color: #333;
+}
+.plan_title {
+    margin-top: 5px;
+    color: #ff0000;
+}
+.plan_maker {
+    text-align: right;
+}
+
 /* 新しいスタイルの追加 */
 .section-container {
-    width: 88%;
+    width: 86%;
     margin: 100px auto;
     display: flex;
     align-items: center;
@@ -149,7 +193,7 @@ body {
 }
 .reverse-img img {
     width: 100%;
-    transform: translateX(-55%);
+    transform: translateX(-40%);
 }
 
 .section-img {
@@ -211,36 +255,41 @@ body {
 .leaves01 {
     position: fixed;
     left: 4vw;
-    bottom: 20vw;
+    top: 25vh;
 }
 .leaves02 {
-    right: -80px;
-    top: 25vw;
+    position: fixed;
+    right: 4vw;
+    top: 40vh;
 }
+
 /* 手前にあるぼかしのかかった葉 */
 .leaves-b {
     position: relative;
     width: 22vw;
-    /* max-width: 600px; */
+    max-width: 600px;
     z-index: 2;
 }
 .leaves-b01 {
-    /* left: -10px; */
+    position: fixed;
     left: 0;
     top: 62vh;
 } 
 .leaves-b02 {
+    position: fixed;
     left: 78vw;
-    top: 22vh;
-} 
+    top: 62vh;
+}
 .leaves-b03 {
+    position: fixed;
     width: 25vw;
     left: 0;
-    bottom: 70vh;
+    top: 12vh;
 }
 .leaves-b04 {
+    position: fixed;
     left: 78vw;
-    bottom: 112vh;
+    top: 12vh;
 }
 
 .bg-section {
@@ -276,6 +325,30 @@ body {
     overflow: hidden;
 }
 
+
+.to_pageTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #26a9f2;
+    opacity: 0.8;
+    z-index: 1000;
+}
+.to_pageTop:hover {
+    cursor: pointer;
+    border: 1px solid #26a9f2;
+    background-color: #fff;
+}
+.to_pageTop:hover path {
+    fill: #26a9f2;
+}
 
 @media only screen and (max-width: 780px) {
     .top-img img {

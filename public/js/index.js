@@ -74,10 +74,6 @@ $(document).scroll(function() {
 
         // 要素が画面内に入った場合のアニメーション
         if (scrollPosition > triggerPositionEnter && $(this).scrollTop() < sectionBottom) {
-            // $(this).css({
-            //     'transform': 'translateY(0)',
-            //     'opacity': '1'
-            // });
             $(this).css({
                 'transform': 'rotate(0deg) scale(1)',
                 'opacity': '1',
@@ -94,10 +90,6 @@ $(document).scroll(function() {
         }
         // 要素が画面外に出た場合の初期状態へのリセット
         else if (scrollPosition < triggerPositionEnter || $(this).scrollTop() > triggerPositionLeave) {
-            // $(this).css({
-            //     'transform': 'translateY(50px)',
-            //     'opacity': '0'
-            // });
             $(this).css({
                 'transform': 'rotate(10deg) scale(0.9)',
                 'opacity': '0',

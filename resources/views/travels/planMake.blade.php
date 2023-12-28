@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/css/plan.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>Plan Make</title>
+    <title>プラン作成画面</title>
 </head>
 <body class="plan_body">
             @if(Auth::user()->role == 0)
@@ -15,24 +15,24 @@
     <main class="plan_main">
         <div class="title">
             @if(Auth::user()->role == 0)
-                公式プラン作成
+                <span>公式プラン作成</span>
             @else
-                プラン作成
+                <span>プラン作成</span>
             @endif
         </div>
 
-        <form action="{{ route('travels.planMake_submit') }}" method="post" id="form" enctype="multipart/form-data" novalidate>
+        <form class="planMake_form" action="{{ route('travels.planMake_submit') }}" method="post" id="form" enctype="multipart/form-data" novalidate>
         @csrf
         @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-        <label for="date" class="planMake_label">プラン名</label>
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        <label for="title" class="planMake_label make_title">プラン名</label>
         @if($errors->has('title'))
             <div class="error_text">{{ $errors->first('title') }}</div>
         @endif
@@ -173,12 +173,11 @@
         @if($errors->has('body'))
             <div class="error_text">{{ $errors->first('body') }}</div>
         @endif
-        <textarea name="body" cols="30" rows="10"></textarea>
+        <textarea class="make_textarea" name="body" cols="30" rows="10"></textarea>
 
         <label for="image" class="planMake_label">写真</label>
-        <input type="file" id="image" name="image" onchange="previewImage(this);">
-        <img id="preview" src="{{ $data['image'] ?? '' }}" alt="プレビュー画像" style="max-width:200px; {{ isset($data['image']) ? '' : 'display:none;' }}">
-        <!-- <img id="preview" src="{{ $data['image'] ?? '' }}" alt="プレビュー画像" style="max-width:200px; {{ isset($data['image']) ? '' : 'display:none;' }}"> -->
+        <input type="file" id="image" name="image" onchange="previewImage(this, 'preview');">
+        <img id="preview" src="{{ $data['image_path'] ?? '' }}" alt="プレビュー画像" style="max-width:200px; {{ isset($data['image_path']) ? '' : 'display:none;' }}">
         <input id="btn" type=submit name="submit" value="投稿内容確認">
 
         </form>

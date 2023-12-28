@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\TravelController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\ExtraController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TravelController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,13 +19,13 @@ Route::get('/planConfirm', [TravelController::class, 'planConfirm'])->name('trav
 Route::post('/planConfirm_submit', [TravelController::class, 'planConfirm_submit'])->name('travels.planConfirm_submit');
 Route::get('/planComplete', [TravelController::class, 'planComplete'])->name('travels.planComplete');
 
-Route::get('/diaryIndex', [TravelController::class, 'diaryIndex'])->name('travels.diaryIndex');
-Route::get('/diaryDetail/{id}', [TravelController::class, 'diaryDetail'])->name('travels.diaryDetail');
-Route::get('/diaryMake', [TravelController::class, 'diaryMake'])->name('travels.diaryMake');
-Route::post('/diaryMake_submit', [TravelController::class, 'diaryMake_submit'])->name('travels.diaryMake_submit');
-Route::get('/diaryConfirm', [TravelController::class, 'diaryConfirm'])->name('travels.diaryConfirm');
-Route::post('/diaryConfirm_submit', [TravelController::class, 'diaryConfirm_submit'])->name('travels.diaryConfirm_submit');
-Route::get('/diaryComplete', [TravelController::class, 'diaryComplete'])->name('travels.diaryComplete');
+Route::get('/diaryIndex', [DiaryController::class, 'diaryIndex'])->name('diaries.diaryIndex');
+Route::get('/diaryDetail/{id}', [DiaryController::class, 'diaryDetail'])->name('diaries.diaryDetail');
+Route::get('/diaryMake', [DiaryController::class, 'diaryMake'])->name('diaries.diaryMake');
+Route::post('/diaryMake_submit', [DiaryController::class, 'diaryMake_submit'])->name('diaries.diaryMake_submit');
+Route::get('/diaryConfirm', [DiaryController::class, 'diaryConfirm'])->name('diaries.diaryConfirm');
+Route::post('/diaryConfirm_submit', [DiaryController::class, 'diaryConfirm_submit'])->name('diaries.diaryConfirm_submit');
+Route::get('/diaryComplete', [DiaryController::class, 'diaryComplete'])->name('diaries.diaryComplete');
 
 Route::get('/', [LoginController::class, 'login'])->name('logins.login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -45,7 +46,20 @@ Route::get('/prefecture/{name}', [TravelController::class, 'showPlans'])->name('
 Route::get('/plans/{name}', [TravelController::class, 'showPlans'])->name('showPlans');
 
 Route::get('/ToNewComer', [ExtraController::class, 'ToNewComer'])->name('extras.ToNewComer');
-Route::get('/bulletinBoard', [ExtraController::class, 'bulletinBoard'])->name('extras.bulletinBoard');
+Route::get('/board', [ExtraController::class, 'board'])->name('extras.board');
+Route::post('/board', [ExtraController::class, 'store']);
+Route::post('/reply-to-post/{post}', [ExtraController::class, 'reply']);
+
+Route::get('/FAQ', [ExtraController::class, 'FAQ'])->name('extras.FAQ');
+Route::get('/siteInfo', [ExtraController::class,'siteInfo'])->name('extras.siteInfo');
+Route::get('/contact', [ExtraController::class, 'contact'])->name('extras.contact');
+Route::post('/contactForm', [ExtraController::class, 'contactForm']);
+Route::get('/confirm', [ExtraController::class, 'confirm'])->name('extras.confirm');
+Route::post('/confirmForm', [ExtraController::class, 'confirmForm']);
+Route::get('/complete', [ExtraController::class, 'complete'])->name('extras.complete');
+Route::get('/userAgreement', [ExtraController::class, 'userAgreement'])->name('extras.userAgreement');
+Route::get('/privacyPolicy', [ExtraController::class, 'privacyPolicy'])->name('extras.privacyPolicy');
+Route::get('/sitemap', [ExtraController::class, 'sitemap'])->name('extras.sitemap');
 
 Route::get('/sticky', [ExtraController::class, 'sticky'])->name('extras.sticky');
 
