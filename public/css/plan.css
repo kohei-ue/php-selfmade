@@ -240,7 +240,7 @@ path:hover {
 
 /* ハイライト用のスタイル */
 .highlight {
-    fill: red; /* または任意のスタイル */
+    fill: red;
 }
 
 /* ------------------------------------------------------------ plan_page ---------------------------------------------------------------------- */
@@ -365,7 +365,7 @@ path:hover {
     transition: all 0.3s ease;
 }
 .sort-menu:hover {
-	background-color: #e6e6e6;
+    background-color: #e6e6e6;
 }
 .sort-menu:focus {
     outline: none;
@@ -373,10 +373,8 @@ path:hover {
 }
 .sort-form {
     padding: 5px 0;
-    width: 40%;
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
 }
 .sort-form button {
     margin-left: 50px;
@@ -423,13 +421,13 @@ path:hover {
 }
 .plan_image img {
     max-width: 100%;
-	width: 18vw;
+    width: 18vw;
     border-radius: 5px;
 }
 .plan_spot {
-	font-size: 1.2rem;
-	margin-left: 40px;
-	line-height: 2.5;
+    font-size: 1.2rem;
+    margin-left: 40px;
+    line-height: 2.5;
 }
 .plan_body {
     flex: 1 1 100%;
@@ -437,14 +435,14 @@ path:hover {
 }
 .plan_image img {
     width: 25vw;
-	/* height: 20vh; */
+    /* height: 20vh; */
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .plan_maker {
-	font-weight: bold;
-	flex: 1 1 100%;
-	text-align: right;
+    font-weight: bold;
+    flex: 1 1 100%;
+    text-align: right;
 }
 .delete-button {
     cursor: pointer;
@@ -627,10 +625,10 @@ path:hover {
     display: block;
 }
 .error_text {
-	color: red;
-	text-align: left;
-	margin: 0 10%;
-	width: 80%;
+    color: red;
+    text-align: left;
+    margin: 0 10%;
+    width: 80%;
 }
 
 /* プラン名 */
