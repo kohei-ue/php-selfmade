@@ -282,10 +282,15 @@
         </svg>
         <div class="currentLocation">
             <h3>下記のボタンを押すことで現在地に該当する都道府県がハイライトされます。</h2>
-            <button id="getCurrentLocation">現在地を取得</button>
+            <button id="getCurrentLocation" onclick="address()">現在地を取得</button>
+            <h4>＜都道府県＞</h4>
+            <div id="prefecture"></div>
+            <h4>＜市区町村＞</h4>
+            <div id="city"></div>
+            <h4>＜住所＞</h4>
+            <div id="address"></div>
         </div>
     </div>
-
 </main>
     <script src="/js/planIndex.js"></script>
 </body>

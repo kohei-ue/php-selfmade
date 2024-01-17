@@ -71,7 +71,6 @@ tr:nth-child(2n+1) th, .detail tr:nth-child(2n+1) td{
         padding-top: 20%;
     }
     .section-container {
-        width: 100%;
         padding: 10px;
     }
     h3 {

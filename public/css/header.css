@@ -1,4 +1,4 @@
-.header{
+.header {
     width: 100%;
     height: 13vh;
     z-index: 999;
@@ -7,19 +7,19 @@
     border: 3px solid #8DD3FA;
     transition: top 0.3s ease;
 }
-.logo{
+.logo, .admin_logo {
     position: relative;
     top: 15%;
     left: 5%;
     width: 300px;
 }
-.logo a img{
+.logo a img {
     position: absolute;
     width: 72px;
     height: 70px;
     top: -1.5vh;
 }
-.header_text{
+.header_text {
     position: absolute;
     left: 28%;
     color: #000;
@@ -28,53 +28,128 @@
     font-style: normal;
     font-weight: 200;
     line-height: normal;
-    /* margin-top: 11px; */
 }
-.nav-box{
+
+/* メニュー */
+.nav-box {
     list-style-type: none;
     display: flex;
     justify-content: space-between;
     position: absolute;
-    width: 375px;
+    width: 60%;
     top: 35%;
-    left: 40%;
+    left: 35%;
+    align-items: center;
 }
-.nav-box a{
+.right-nav {
+    display: flex;
+    align-items: center;
+}
+.nav-box a {
     color: black;
     text-decoration: none;
 }
-.to_userInfo {
-    color: black;
-    position: absolute;
-    top: 35%;
-    right: 13%;
-}
-.logout{
-    position: absolute;
-    top: 35%;
-    right: 5%;
+.to_userInfo, .logout {
+    margin-left: -15px;
 }
 .to_userInfo a, .logout a {
     color: #000;
     text-decoration-line: underline;
 }
+.logout_admin {
+    text-decoration: none;
+    text-align: right;
+    margin: 5vh 5vw 0 0;
+}
 
 .hamburger-menu {
     display: none;
+    width: 40px;
+    height: 40px;
+    position: absolute;
     flex-direction: column;
-    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    top: 25%;
+    right: 5%;
+    margin: auto;
     cursor: pointer;
+    background-color: #ffffff;
+    border: none;
 }
 .bar {
-    width: 30px;
-    height: 3px;
-    background-color: black;
+    width: 40px;
+    height: 4px;
+    border-radius: 2px;
+    margin-bottom: 7.5px;
+    background-color:  #2DFDB9;
+    display: inline-block;
 }
-.menu-active .nav, .menu-active .logout {
-    display: block;
+.bar:last-child {
+    margin-bottom: 0px;
+}
+.bar-1.open {
+    animation: stick-1-open .6s ease-out forwards;
+}
+.bar-2.open {
+    animation: stick-2-open .6s linear forwards;
+}
+.bar-3.open {
+    animation: stick-3-open .6s linear forwards;
+}
+@keyframes stick-1-open {
+    0%   {width: 40px;}
+    40%  {background-color: #ff1456; width: 4px; transform: translate(20px, 0px);}
+    75%, 80%  {width: 4px; transform: translate(20px, -25px); animation-timing-function: cubic-bezier(0,1,1,1);}
+    100% {background-color: #ff1456; width: 4px; transform: translate(17.5px, 23px);}
+}
+@keyframes stick-2-open {
+    80%  {background-color: #2DFDB9; transform: translate(0px, 0px) rotate(0deg);}
+    100% {background-color: #ff1456; transform: translate(4px, 0px) rotate(40deg);}
+}
+@keyframes stick-3-open {
+    80%  {background-color: #2DFDB9; transform: translate(0px, 0px) rotate(0deg);}
+    100% {background-color: #ff1456; transform: translate(4px, -11.5px) rotate(-40deg);}
 }
 
-@media only screen and (max-width: 780px) {
+.bar-1.close {
+    width: 4px; 
+    transform: translate(13.5px, 13px);
+    animation: stick-1-close .6s ease-out forwards;
+}
+.bar-2.close {
+    transform: translate(0px, 0px) rotate(40deg);
+    animation: stick-2-close .6s ease-out forwards;
+}
+.bar-3.close {
+    transform: translate(0px, -11.5px) rotate(-40deg);
+    animation: stick-3-close .6s ease-out forwards;
+}
+@keyframes stick-1-close {
+    0%, 70% {width: 0px;}
+    100%    {width: 40px; transform: translate(0, 0);}
+}
+
+@keyframes stick-2-close {
+    0%   {background-color: #ff1456; width: 40px;}
+    20%  {background-color: #ff1456; width: 4px; transform: translate(0, 0px) rotate(40deg);}
+    40%  {background-color: #2DFDB9; width: 0px;}
+    65%  {transform: translate(0, -35px); animation-timing-function: cubic-bezier(0,1,1,1);}
+    80%  {width: 0px;}
+    100% {width: 40px; transform: translate(0, 0px);}
+}
+
+@keyframes stick-3-close {
+    0%   {background-color: #ff1456; width: 40px;}
+    20%  {background-color: #ff1456; width: 4px; transform: translate(0, -11.5px) rotate(-40deg);}
+    40%  {background-color: #2DFDB9;}
+    65%  {transform: translate(0, -46.5px); animation-timing-function: cubic-bezier(0,1,1,1);}
+    90%  {width: 4px;}
+    100% {width: 40px; transform: translate(0, 0px);}
+}
+
+
+@media screen and (max-width: 768px) {
     .logo {
         left: 50%; /* 中央に配置 */
         transform: translateX(-50%); /* 左に50%ずらして中央に配置 */
@@ -91,38 +166,79 @@
 
     .hamburger-menu {
         display: flex;
-        position: absolute;
-        top: 20px;
-        right: 15px;
-        z-index: 1000;
     }
-    .nav, .logout, .to_userInfo {
-        position: static;
-        margin-top: 15px;
+    .nav {
         display: none;
+        position: fixed;
+        width: 25%;
+        top: 12.5vh;
+        right: 3px;
+        height: 55%;
+        background: white;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        border-radius: 5px;
+        background: linear-gradient(to right, #95fc76, #abf798);
     }
     .nav-box {
         flex-direction: column;
-        gap: 10px;
-        position: static;
-        width: 60%;
-        top: unset;
-        left: unset;
-        margin: 15% 0 0 40%;
+        width: 100%;
+        top: 5vh;
+        left: 0;
     }
+    .nav-box li {
+        list-style-type: none;
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
     .nav-box a {
         display: block;
-        padding: 10px;
-        background-color: #a09c9c;
-        border-radius: 5px;
-        text-align: center;
+        font-size: 16px;
+        color: #333;
+        text-decoration: none;
+        padding: 5px 0px;
+        transition: background-color 0.3s;
     }
-    .logout, .to_userInfo {
-        width: 60%;
+    .nav-box a:hover {
+        background-color: #f2f2f2;
+    }
+    .right-nav {
+        display: none;
+    }
+    .to_userInfo, .logout {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo img {
+        left: 5%;
+        margin-top: 1.5vh;
+    }
+    .header_text {
+        top: 1vh;
+    }
+    .hamburger-menu {
+        top: 30%;
+    }
+    .nav {
+        width: 100%;
+        height: 40%;
+        right: 0;
+        background: #fff;
+        border: 3px solid #8DD3FA;
+        border-top: none;
+    }
+    .nav-box {
+        top: 3vh;
+    }
+    .nav-box a {
+        font-weight: bold;
+    }
+    .nav-box li {
+        margin: 5px 0;
+        border-top: 1px solid #000000;
+        width: 80%;
         text-align: center;
-        padding: 10px;
-        background-color: #a09c9c;
-        border-radius: 5px;
-        margin-left: 40%;
     }
 }

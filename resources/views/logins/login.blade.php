@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Irish+Grover&display=swap">
     <script src="https://kit.fontawesome.com/9292378248.js" crossorigin="anonymous"></script>
     <title>ログイン画面</title>
 </head>
-<body>
+<body id="login_body">
     <form action="{{ route('logins.userLogin') }}" method="POST" class="login_form" novalidate>
         @csrf
         <div class="logo">

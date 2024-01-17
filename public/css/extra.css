@@ -74,6 +74,9 @@ section {
     display: flex;
     margin-bottom: 60px;
 }
+#tokyoMap, #SapporoMap, #SendaiMap, #KyotoMap, #OkinawaMap {
+    width: 95%;
+}
 .imgs {
     max-width: 500px;
     text-align: center;
@@ -184,6 +187,7 @@ section img {
 
 .post-form textarea {
     font-size: x-large;
+    resize: vertical;
     width: 100%;
     height: 100px;
     margin-bottom: 10px;
@@ -485,4 +489,51 @@ section img {
 
 #sitemap_img {
     width: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .popular-destinations, .imgs, .imgs_make {
+        width: 100%;
+        padding: 10px;
+        margin: 0;
+    }
+    .imgs img, .imgs_make img {
+        width: 100%;
+        height: auto;
+        margin: 10px 0;
+    }
+    #tokyoMap, #SapporoMap, #SendaiMap, #KyotoMap, #OkinawaMap {
+        width: 100%;
+    }
+    section {
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid;
+        padding: 10px;
+    }
+    .info {
+        margin-top: 20px;
+    }
+    #breadComer, .AllComer, #lets-planMake {
+        margin-left: 2%;
+        margin-right: 2%;
+        font-size: 1.1rem;
+    }
+
+    #FAQ_body {
+        padding-top: 100px;
+    }
+    .contact-content, #agreement_title, #policy_title, #sitemap_title {
+        padding-top: 80px;
+    }
+
+    .contact-form textarea {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #breadComer {
+        padding-top: 100px;
+    }
 }

@@ -39,7 +39,7 @@
                     <div class="reply-form" id="reply-form-{{ $post->id }}" style="display: none;">
                         <form action="/reply-to-post/{{ $post->id }}" method="post">
                         @csrf
-                            <textarea name="message" cols="10" rows="5">>>{{ $post->id }}
+                            <textarea name="message" cols="10" rows="5">>>{{ $post->id + 1 }}
 </textarea>
                             <button type="submit">返信する</button>
                         </form>

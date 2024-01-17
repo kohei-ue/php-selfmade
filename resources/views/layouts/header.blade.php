@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Irish+Grover&display=swap">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-
 <header class="header">
     <div class="logo">
         <a href="{{ route('travels.index') }}">
@@ -16,11 +15,11 @@
         </a>
     </div>
 
-    <div class="hamburger-menu">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
+    <button class="hamburger-menu">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+    </button>
 
     <nav class="nav">
         <ul class="nav-box">
@@ -28,14 +27,16 @@
             <li><a href="{{ route('travels.planMake') }}">プラン作成</a></li>
             <li><a href="{{ route('diaries.diaryIndex') }}">旅日記</a></li>
             <li><a href="{{ route('extras.board') }}">掲示板</a></li>
+            <li class="right-nav">
+                @if(Auth::check())
+                <li class="to_userInfo">
+                    <a href="{{ route('users.userInfo', ['user_id' => Auth::user()->id]) }}">アカウント情報</a>
+                </li>
+                @endif
+                <li class="logout"><a href="{{ route('logout') }}">ログアウト</a></li>
+            </li>
         </ul>
     </nav>
-    @if(Auth::check())
-    <div class="to_userInfo">
-        <a href="{{ route('users.userInfo', ['user_id' => Auth::user()->id]) }}">アカウント情報</a>
-    </div>
-    @endif
-    <div class="logout"><a href="{{ route('logout') }}">ログアウト</a></div>
 
     <script>
     $(function() {
@@ -55,30 +56,39 @@
 
             lastScrollTop = currentScrollTop;
         });
-        
-        $('.hamburger-menu').on('click', function(event) {
-            event.stopPropagation(); // このイベントが親要素に伝播しないようにする
 
-            if ($('header').hasClass('menu-active')) {
-                $('header').removeClass('menu-active');
-                $('.nav, .logout, .to_userInfo').hide();
+        $(document).ready(function() {
+            $('.hamburger-menu').click(function() {
+                $(this).toggleClass('change');
+                $('.nav').slideToggle();
+            });
+        });
+
+        $(document).ready(function() {
+            $(".hamburger-menu").click(function() {
+                $(".bar").toggleClass(function () {
+                return $(this).is('.open, .close') ? 'open close' : 'open';
+                });
+            });
+        });
+
+        $(window).resize(function() {
+            var windowWidth = $(window).width();
+            // ブレークポイント
+            var breakpoint = 768;
+
+            // ウィンドウ幅がブレークポイント以上の場合、.navを表示
+            if (windowWidth >= breakpoint) {
+                $('.nav').css('display', 'block');
             } else {
-                $('header').addClass('menu-active');
-                $('.nav, .logout, .to_userInfo').show();
+                // ウィンドウ幅がブレークポイント未満の場合、.navを非表示
+                $('.nav').css('display', 'none');
             }
         });
 
-        // メニュー以外の部分がクリックされたときの処理
-        $(document).on('click', function() {
-            if ($('header').hasClass('menu-active')) {
-                $('header').removeClass('menu-active');
-                $('.nav, .logout, .to_userInfo').hide();
-            }
-        });
-
-        // メニュー自体がクリックされたとき、メニューを閉じないようにする
-        $('.nav, .logout, .to_userInfo').on('click', function(event) {
-            event.stopPropagation();
+        // ページ読み込み時
+        $(document).ready(function() {
+            $(window).resize();
         });
     })
     </script>

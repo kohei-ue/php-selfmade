@@ -15,5 +15,5 @@
         </a>
     </div>
 
-    <div class="logout"><a href="{{ route('logout') }}">ログアウト</a></div>
+    <div class="logout_admin"><a href="{{ route('logout') }}">ログアウト</a></div>
 </header>

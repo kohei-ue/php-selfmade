@@ -105,10 +105,10 @@ h3 {
 }
 
 /* register~ */
-.register_title {
+/* .register_title {
     font-size: 32px;
     font-weight: bold;
-}
+} */
 /* h2 {
     margin-bottom: 20px;
 } */
@@ -145,7 +145,7 @@ h3 {
 }
 .go_to_register_ad {
     font-weight: bold;
-    margin: 10px 0 0 47%;
+    margin: 10px 0 0 60vw;
 }
 
 /* register_comp */
@@ -189,4 +189,58 @@ h2 {
 }
 .go_to_login:hover {
     background-color: #b0102a;
+}
+
+@media screen and (max-width: 480px) {
+    html {
+        height: 100%;
+    }
+    #login_body {
+        transform: translateY(25%);
+        background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)),
+        url("/image/login_phone.jpg");
+    }
+    #register_body {
+        transform: translateY(15%);
+        background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)),
+        url("/image/login_phone.jpg");
+    }
+    form {
+        width: 90%;
+        /* margin-top: 100px; */
+    }
+    .logo img {
+        padding: 20px 0 0 5%;
+    }
+    .logo_text {
+        font-size: 2.5rem;
+        padding: 5vh 0 0 20px;
+    }
+    h3 {
+        width: 100%;
+    }
+    .login_input, .login {
+        width: 100%;
+    }
+    .login {
+        min-width: 150px;
+        padding: 0.7em 1.5em;
+    }
+    .login span {
+        top: -1.25em;
+        left: -1.5em;
+        padding: 0.8em 1.2em;
+    }
+    .to-register {
+        margin-right: 3%;
+    }
+
+    .register_title {
+        margin: 0;
+    }
+    .go_to_register_ad {
+        margin: 10px 0 0 30vw;
+    }
 }

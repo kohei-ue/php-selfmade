@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/login.css">
     <title>新規登録画面</title>
 </head>
-<body>
-    <h4 class="register_title">ユーザー新規登録</h4>
+<body id="register_body">
+    <h1 class="register_title">ユーザー新規登録</h1>
     <form action="{{ route('logins.userRegister') }}" method="POST" class="login_form" novalidate>
         @csrf
         <h3>ユーザー名:</h3>

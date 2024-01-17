@@ -164,9 +164,9 @@
     color: #DDD;
 }
 
-@media only screen and (max-width: 780px) {
+@media screen and (max-width: 768px) {
     .footer-logo img {
-        left: 35%;
+        left: 40%;
         top: 50%;
         transform: translate(-50%, -50%);
     }
@@ -174,5 +174,10 @@
         left: 57%;
         top: 50%;
         transform: translate(-50%, -50%);
+    }
+}
+@media screen and (max-width: 480px) {
+    .footer-logo img {
+        left: 30%;
     }
 }

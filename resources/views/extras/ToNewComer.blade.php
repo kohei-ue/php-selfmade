@@ -21,7 +21,7 @@
             <section id="tokyo">
                 <div class="imgs">
                     <img src="/image/tokyo.jpg" alt="浅草">
-                    <div id="tokyoMap" style="height: 300px; width: 95%; margin: 10px 0;"></div> <!-- 地図を表示するためのコンテナ -->
+                    <div id="tokyoMap" style="height: 300px; margin: 10px 0;"></div> <!-- 地図を表示するためのコンテナ -->
                     <img src="/image/tokyo2.png" alt="スカイツリー">
                 </div>
 
@@ -66,7 +66,7 @@
             <section id="sapporo">
                 <div class="imgs">
                     <img src="/image/sapporo.webp" alt="大通公園">
-                    <div id="SapporoMap" style="height: 300px; width: 95%; margin: 10px 0;"></div>
+                    <div id="SapporoMap" style="height: 300px; margin: 10px 0;"></div>
                     <img src="/image/sapporo2.jpg" alt="札幌時計台">
                 </div>
 
@@ -111,7 +111,7 @@
             <section id="sendai">
                 <div class="imgs">
                     <img src="/image/sendai.jpg" alt="伊達政宗像">
-                    <div id="SendaiMap" style="height: 300px; width: 95%; margin: 10px 0;"></div>
+                    <div id="SendaiMap" style="height: 300px; margin: 10px 0;"></div>
                     <img src="/image/sendai2.jpg" alt="定禅寺通り">
                 </div>
 
@@ -155,7 +155,7 @@
             <section id="kyoto">
                 <div class="imgs">
                     <img src="/image/kyoto.jpg" alt="八坂通り">
-                    <div id="KyotoMap" style="height: 300px; width: 95%; margin: 10px 0;"></div>
+                    <div id="KyotoMap" style="height: 300px; margin: 10px 0;"></div>
                     <img src="/image/kyoto2.webp" alt="清水寺">
                 </div>
 
@@ -199,7 +199,7 @@
             <section id="okinawa">
                 <div class="imgs">
                     <img src="/image/okinawa.webp" alt="首里城">
-                    <div id="OkinawaMap" style="height: 300px; width: 95%; margin: 10px 0;"></div>
+                    <div id="OkinawaMap" style="height: 300px; margin: 10px 0;"></div>
                     <img src="/image/okinawa2.jpg" alt="美ら海水族館">
                 </div>
 

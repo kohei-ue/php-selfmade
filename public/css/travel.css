@@ -114,15 +114,9 @@ img { border-style: none; display: block; }
     background-color: rgba(255, 255, 255, 0.4);
     width: 100%;
 }
-.listText_latest {
+.listText_latest, .listText_popular {
     margin-left: 5%;
     font-size: x-large;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-.listText_popular {
-    font-size: x-large;
-    font-weight: bold;
     margin-bottom: 10px;
 }
 .latestPlans {
@@ -293,11 +287,11 @@ img { border-style: none; display: block; }
 }
 
 .bg-section {
-	position: absolute;
+    position: absolute;
     left: 0;
     top: 0;
-	width: 100%;
-	height: 100vh;
+    width: 100%;
+    height: 100vh;
     z-index: 1;
     background-repeat: no-repeat;
     background-position: center center; 
@@ -350,35 +344,117 @@ img { border-style: none; display: block; }
     fill: #26a9f2;
 }
 
-@media only screen and (max-width: 780px) {
+@media screen and (max-width: 768px) {
     .top-img img {
         width: 100%;
     }
     .top-text {
         font-size: 2.5rem;
         top: 40%; 
-        right: 5%;
+        right: 20%;
         line-height: 50px;
     }
     .intro-text {
         font-size: 16px;
-        padding: 15px;
+        padding: 10px;
     }
     .section-container {
-        flex-direction: column;
+        position: relative;
     }
     .section-img {
-        margin-bottom: -15px;
-    }
-    .section-img img {
         width: 100%;
+        margin-bottom: 10px;
         order: -1; /* .section-imgを.section-contentの上に移動 */
     }
+    .section-img img {
+        width: 80vw;
+    }
     .reverse-order {
-        flex-direction: column-reverse;
+        flex-direction: row;
     }
     .reverse-img img {
         position: static;
         transform: none;
+    }
+    .section-content {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+        box-sizing: border-box;
+    }
+
+    #weather-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    #weather-info h4 {
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: bold;
+        width: 100%;
+    }
+    #weather-info p {
+        border: 2px solid;
+    }
+    .weather-city {
+        width: calc(50% - 20px); /* 2列のための幅調整 */
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* 奥にあるくっきりとした葉 */
+    .leaves {
+        position: absolute;
+        width: 34vw;
+        max-width: 600px;
+    }
+    .leaves01 {
+        position: fixed;
+        top: 45vh;
+        left: 0;
+    }
+    .leaves02 {
+        position: fixed;
+        top: 60vh;
+        right: 0;
+    }
+
+    /* 手前にあるぼかしのかかった葉 */
+    .leaves-b {
+        position: relative;
+        width: 42vw;
+        max-width: 600px;
+        z-index: 2;
+    }
+    .leaves-b01 {
+        position: fixed;
+        left: -10px;
+        top: 70vh;
+    } 
+    .leaves-b02 {
+        position: fixed;
+        left: 60vw;
+        top: 83vh;
+    }
+    .leaves-b03 {
+        position: fixed;
+        width: 35vw;
+        left: -10px;
+        top: 13vh;
+    }
+    .leaves-b04 {
+        position: fixed;
+        left: 60vw
+    }
+
+    #plan_indexList {
+        flex-direction: column;
+    }
+
+    .section-img img {
+        width: 85vw;
     }
 }
